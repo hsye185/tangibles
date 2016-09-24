@@ -2,6 +2,8 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import angularUiRouter from 'angular-ui-router';
+import ngRoute from 'bower-angular-route-master'
+import spellingApp from '../imports/components/spHome/spHome';
 import home from '../imports/components/tgHome/tgHome';
 import diagram from '../imports/components/tgDiagram/tgDiagram';
 import libraries from '../imports/components/tgLibraries/tgLibraries';
@@ -18,7 +20,7 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY',
 });
 
-angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name])
+angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, ngRoute])
     .constant("$const", {
         "APP": "Tangibles",
         "NEW": "New diagram",
@@ -30,7 +32,7 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
         "DEFAULT_LIBRARY_ID": "M5q3SwPNcgCCKDWQL",
         "DEFAULT_IMAGE_URL": __meteor_runtime_config__.ROOT_URL + 'images/stamp.png'
     })
-    .config(function ($mdThemingProvider, $mdIconProvider, $stateProvider, $urlRouterProvider, $const) {
+    .config(function ($mdThemingProvider, $mdIconProvider, $stateProvider, $urlRouterProvider, $const, $routeProvider) {
         'ngInject';
         $mdThemingProvider.theme('default')
             .primaryPalette('green')
@@ -69,6 +71,12 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
             }
         };
 
+        // $routeProvider.when('/spelling_app', {
+        //         templateUrl: 'page1.html'
+        //     }).when('/home', {
+        //         template: 'main.html'
+        //     });
+
         $urlRouterProvider.otherwise('home/diagram///');
 
         $stateProvider
@@ -78,6 +86,15 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
                 views: {
                     'main-view': {
                         component: home.name
+                    }
+                },
+                resolve: resolve
+            })
+            .state('spelling_app', {
+                url: "/spelling_app",
+                views: {
+                    'main-view': {
+                        component: spellingApp.name
                     }
                 },
                 resolve: resolve

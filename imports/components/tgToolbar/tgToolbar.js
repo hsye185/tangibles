@@ -74,6 +74,10 @@ class ToolbarCtrl {
     {
         PubSub.publishSync('zoomIn', 0);
     }
+    startSpellingApp()
+    {
+        alert("Starting Application");
+    }
 
     zoomOut()
     {
