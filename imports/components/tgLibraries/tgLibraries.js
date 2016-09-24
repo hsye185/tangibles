@@ -243,7 +243,10 @@ export class LibrariesCtrl extends AbstractTangibleController{
             Meteor.call("libraries.updateTangibleImage", this.selectedLibrary._id, this.selectedTangible.id, this.selectedLibrary.images[this.selectedTangible.id]);
         }
 
-        Meteor.call("libraries.updateTangible", this.selectedLibrary._id, this.selectedTangible.id, this.selectedTangible);
+        Meteor.call("libraries.updateTangible", this.selectedLibrary._id, this.selectedTangible.id, this.selectedTangible.tangible);
+
+        // this.deleteTangible(this.selectedTangible.id);
+        // Meteor.call("libraries.addTangible", this.selectedLibrary._id, this.selectedTangible.id,this.selectedTangible.tangible);
 
         SidenavCtrl.toggle('tangible-side-nav', this.$mdSidenav, this.$mdUtil)
     }

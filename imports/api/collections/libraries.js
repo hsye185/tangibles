@@ -74,7 +74,7 @@ Meteor.methods({
         if (isLibraryMine(libraryId)) {
             Libraries.update(
                 {_id: libraryId},
-                {$set: {['tangible.' + tangibleId]: tangible}}
+                {$set: {['tangibles.' + tangibleId]: tangible}}
             );
         }
         else {
