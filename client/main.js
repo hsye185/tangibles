@@ -3,7 +3,7 @@ import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import angularUiRouter from 'angular-ui-router';
 import spellingApp from '../imports/components/spHome/spHome';
-import spellingAppSettings from '.../imports/components/spSettings';
+import setup from '../imports/components/spSetup/spSetup';
 import home from '../imports/components/tgHome/tgHome';
 import diagram from '../imports/components/tgDiagram/tgDiagram';
 import libraries from '../imports/components/tgLibraries/tgLibraries';
@@ -20,7 +20,7 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY',
 });
 
-angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name])
+angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, setup.name])
     .constant("$const", {
         "APP": "Tangibles",
         "NEW": "New diagram",
@@ -93,11 +93,11 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
                 },
                 resolve: resolve
             })
-            .state('spelling_app/settings', {
-                url: "/spelling_app/settings",
+            .state('setup', {
+                url: "/setup",
                 views: {
                     'main-view': {
-                        component: spellingAppSettings.name
+                        component: setup.name
                     }
                 },
                 resolve: resolve

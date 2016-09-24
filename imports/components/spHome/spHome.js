@@ -9,7 +9,14 @@ class SPHomeCtrl {
     constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const) {
         'ngInject';
         $reactive(this).attach($scope);
+        this.$scope = $scope;
+        this.$state = $state;
         
+    }
+
+    goToSettings() {
+        alert('button pressed');
+        this.$state.go('settings');
     }
 }
 
