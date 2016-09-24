@@ -3,6 +3,7 @@ import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import angularUiRouter from 'angular-ui-router';
 import spellingApp from '../imports/components/spHome/spHome';
+import spellingAppSettings from '.../imports/components/spSettings';
 import home from '../imports/components/tgHome/tgHome';
 import diagram from '../imports/components/tgDiagram/tgDiagram';
 import libraries from '../imports/components/tgLibraries/tgLibraries';
@@ -88,6 +89,15 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
                 views: {
                     'main-view': {
                         component: spellingApp.name
+                    }
+                },
+                resolve: resolve
+            })
+            .state('spelling_app/settings', {
+                url: "/spelling_app/settings",
+                views: {
+                    'main-view': {
+                        component: spellingAppSettings.name
                     }
                 },
                 resolve: resolve
