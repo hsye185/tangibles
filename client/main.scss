@@ -222,3 +222,21 @@ div.vertical {
 img {
 
 }
+.spHomeContainer{
+  display: flex;
+  .leftPanel{
+    width: 20%;
+    height: 100vh;
+    background-color: lightblue;
+  }
+  .middlePanel{
+    width: 1%;
+    height: 100vh;
+    background-color: orange;
+  }
+  .rightPanel{
+    width: 79%;
+    height: 100vh;
+    background-color: darkgray;
+  }
+}
