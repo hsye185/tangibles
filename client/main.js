@@ -2,7 +2,6 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import angularUiRouter from 'angular-ui-router';
-import ngRoute from 'bower-angular-route-master'
 import spellingApp from '../imports/components/spHome/spHome';
 import home from '../imports/components/tgHome/tgHome';
 import diagram from '../imports/components/tgDiagram/tgDiagram';
@@ -20,7 +19,7 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY',
 });
 
-angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, ngRoute])
+angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name])
     .constant("$const", {
         "APP": "Tangibles",
         "NEW": "New diagram",
@@ -32,7 +31,7 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
         "DEFAULT_LIBRARY_ID": "M5q3SwPNcgCCKDWQL",
         "DEFAULT_IMAGE_URL": __meteor_runtime_config__.ROOT_URL + 'images/stamp.png'
     })
-    .config(function ($mdThemingProvider, $mdIconProvider, $stateProvider, $urlRouterProvider, $const, $routeProvider) {
+    .config(function ($mdThemingProvider, $mdIconProvider, $stateProvider, $urlRouterProvider, $const) {
         'ngInject';
         $mdThemingProvider.theme('default')
             .primaryPalette('green')
@@ -70,12 +69,6 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
                 return $rootScope.subscribe('diagrams');
             }
         };
-
-        // $routeProvider.when('/spelling_app', {
-        //         templateUrl: 'page1.html'
-        //     }).when('/home', {
-        //         template: 'main.html'
-        //     });
 
         $urlRouterProvider.otherwise('home/diagram///');
 
