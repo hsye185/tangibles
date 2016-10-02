@@ -133,6 +133,9 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
         }
     };
     return service;
+}).factory('$spGameData', function () {
+    var playerName = 'carlo';
+    return playerName;
 }).service('$tgImages', Images);
 
 function onReady() {

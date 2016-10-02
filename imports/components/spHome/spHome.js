@@ -6,17 +6,12 @@ import {Diagrams} from '../../api/collections/diagrams.js';
 import {Libraries} from '../../api/collections/libraries.js';
 
 class SPHomeCtrl {
-    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const) {
+    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $spGameData, $const) {
         'ngInject';
         $reactive(this).attach($scope);
         this.$scope = $scope;
         this.$state = $state;
-        
-    }
-
-    goToSettings() {
-        alert('button pressed');
-        this.$state.go('settings');
+        this.$spGameData = $spGameData
     }
 }
 
