@@ -10,8 +10,8 @@ export const moduleExists = function (moduleId) {
 
 Meteor.methods({
     'modules.insert' (module) {
-        if (!Meteor.userId())
-            throw new Meteor.Error('not-authorized');
+        // if (!Meteor.userId())
+        //     throw new Meteor.Error('not-authorized');
 
         Modules.insert({_id: Random.id(), name: module.name, words: module.words});
     },

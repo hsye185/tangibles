@@ -3,6 +3,7 @@ import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import angularUiRouter from 'angular-ui-router';
 import spellingApp from '../imports/components/spHome/spHome';
+import settings from '../imports/components/spSettings/spSettings';
 import home from '../imports/components/tgHome/tgHome';
 import diagram from '../imports/components/tgDiagram/tgDiagram';
 import libraries from '../imports/components/tgLibraries/tgLibraries';
@@ -19,7 +20,7 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY',
 });
 
-angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name])
+angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, settings.name])
     .constant("$const", {
         "APP": "Tangibles",
         "NEW": "New diagram",
@@ -67,7 +68,7 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
             diagrams: function ($rootScope) {
                 'ngInject';
                 return $rootScope.subscribe('diagrams');
-            }
+            },
         };
 
         $urlRouterProvider.otherwise('home/diagram///');
@@ -88,6 +89,15 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
                 views: {
                     'main-view': {
                         component: spellingApp.name
+                    }
+                },
+                resolve: resolve
+            })
+            .state('settings', {
+                url: "/settings",
+                views: {
+                    'main-view': {
+                        component: settings.name
                     }
                 },
                 resolve: resolve
@@ -123,7 +133,8 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
         }
     };
     return service;
-}).service('$tgImages', Images);
+})
+.service('$tgImages', Images);
 
 function onReady() {
     angular.bootstrap(document, ['tangibles'], {strictDi: true});
