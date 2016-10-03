@@ -68,7 +68,7 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
             diagrams: function ($rootScope) {
                 'ngInject';
                 return $rootScope.subscribe('diagrams');
-            }
+            },
         };
 
         $urlRouterProvider.otherwise('home/diagram///');
