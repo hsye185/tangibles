@@ -1,31 +1,3 @@
-@font-face {
-    font-family: robotoRegular;
-    src: url(../fonts/Roboto-Regular.ttf);
-}
-@font-face {
-    font-family: robotoMedium;
-    src: url(../fonts/Roboto-Medium.ttf);
-}
-@font-face {
-    font-family: robotoLight;
-    src: url(../fonts/Roboto-Light.ttf);
-}
-@font-face {
-    font-family: robotoThin;
-    src: url(../fonts/Roboto-Thin.ttf);
-}
-
-.darkBlue{
-	color: #00072D;
-}
-
-.white{
-	color: white;
-}
-
-.whiteAmber{
-	color: #FFF8E1;
-}
 
 /*.h1{
 	font-family: "robotoRegular";
@@ -79,7 +51,7 @@
   	position: absolute;
   	left: 3.41796875%;
   	bottom: 3.41796875%;
-  	
+
 }
 
 .logo{

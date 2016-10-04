@@ -1,0 +1,194 @@
+.logoContainerPanel{
+	position: absolute;
+	width:240px;
+	height:80px;
+	top: 0;
+	left: 0;
+
+	background : -moz-radial-gradient(-29.03% 20.42%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  background : -webkit-radial-gradient(-29.03% 20.42%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  background : -webkit-gradient(radial,-29.03% 20.42% ,0 , -29.03% 20.42%, 462.73 ,color-stop(0,rgba(255, 213, 79, 1) ),color-stop(1,rgba(255, 160, 0, 1) ));
+  background : -o-radial-gradient(-29.03% 20.42%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  background : -ms-radial-gradient(-29.03% 20.42%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Stlye=2);"
+  background : radial-gradient(-29.03% 20.42%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
+
+}
+
+.logo{
+	background-image: url("../images/logo_settings_admin.svg");
+	background-repeat: no-repeat;
+	position: relative;
+	width: 170px;
+	height: 45px;
+	left: 35px;
+	top: 20px;
+}
+
+.leftPanel{
+	position: absolute;
+	width: 240px;
+	height: calc(100% - 240px);
+	left:0;
+	bottom:0;
+
+	background : -moz-radial-gradient(-84.58% 35.42%, circle farthest-side, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  background : -webkit-radial-gradient(-84.58% 35.42%, circle farthest-side, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  background : -webkit-gradient(radial,-84.58% 35.42% ,0 , -84.58% 35.42%, 673.17 ,color-stop(0,rgba(51, 57, 87, 1) ),color-stop(1,rgba(0, 7, 45, 1) ));
+  background : -o-radial-gradient(-84.58% 35.42%, circle farthest-side, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  background : -ms-radial-gradient(-84.58% 35.42%, circle farthest-side, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Stlye=2);"
+  background : radial-gradient(-84.58% 35.42%, circle farthest-side, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
+
+}
+
+#wordListsButton{
+	font-family : "robotoLight";
+  font-size : 18px;
+  letter-spacing : 0.45px;
+
+  position: relative;
+  top: 20px;
+  left:35px;
+}
+
+.rightArrow{
+	background-image: url("../images/right_arrow.svg");
+	background-repeat: no-repeat;
+	width: 40px;
+    height: 25px;
+    position: relative;
+    top: -106px;
+    left: 140px;
+}
+
+#tangibleLibraryButton{
+	font-family : "robotoLight";
+  font-size : 18px;
+  letter-spacing : 0.45px;
+
+	position: relative;
+  top: 20px;
+  left:35px;
+}
+
+.userPhoto{
+	position: absolute;
+	left: 0px;
+	top:80px;
+	width: 240px;
+	height: 160px;
+	overflow: hidden;
+}
+
+.userPhotoOverlayPanel{
+	position: absolute;
+	width: 240px;
+	height: 30px;
+	left: 0;
+	top: 210px;
+
+	background : #000000;
+  background : rgba(0, 0, 0, 1);
+  opacity : 0.75;
+  filter: alpha(opacity=75) progid:DXImageTransform.Microsoft.Alpha(opacity=75) ;
+}
+
+#photoLabel{
+	font-family : "robotoLight";
+  font-size : 12px;
+  letter-spacing : 0.3px;
+  position: absolute;
+  top: 189px;
+  left: 18px; 
+
+}
+
+.topbarPanel{
+	position: absolute;
+	width: calc(100% - 240px);
+	height: 80px;
+	left: 240px;
+	top: 0px;
+	z-index: 5;
+
+	background : #FFFFFF;
+  background : rgba(255, 255, 255, 1);
+  box-shadow : 2px 2px 2px rgba(0, 0, 0, 0.5);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='#000000') ;
+
+}
+
+.plusButton{
+	background-image: url("../images/plus_button.svg");
+	width: 30px;
+	height: 30px;
+
+	position: absolute;
+	top:25px;
+	left:30px;
+
+}
+
+.logoutButton{
+	background-image: url("../images/logout_button.svg");
+	width: 30px;
+	height: 30px;
+
+	position: absolute;
+	top:25px;
+	right:40px;
+
+}
+
+.mainPanel{
+	position: absolute;
+	width: calc(100% - 240px);
+	height: calc(100% - 80px);
+	top: 80px;
+	left: 240px;
+	z-index: 0;
+
+	background : -moz-radial-gradient(-14.35% -3772.63%, circle farthest-side, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  background : -webkit-radial-gradient(-14.35% -3772.63%, circle farthest-side, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  background : -webkit-gradient(radial,-14.35% -3772.63% ,0 , -14.35% -3772.63%, 1330.61 ,color-stop(0,rgba(255, 255, 255, 1) ),color-stop(1,rgba(255, 248, 225, 1) ));
+  background : -o-radial-gradient(-14.35% -3772.63%, circle farthest-side, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  background : -ms-radial-gradient(-14.35% -3772.63%, circle farthest-side, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Stlye=2);"
+  background : radial-gradient(-14.35% -3772.63%, circle farthest-side, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
+
+}
+
+#mainPanelTitle{
+	font-family : "robotoLight";
+  font-size : 24px;
+  letter-spacing : 0.6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 0;
+
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.wordListContainer{
+	position: absolute;
+	top:83px;
+	left: 30px; 
+	width: calc(100% - 70px);
+	height: calc(100% - 83px);
+	background: blue;
+	overflow-y: scroll;
+}
+
+
+
+
+
+
+

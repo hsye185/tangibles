@@ -1,15 +1,50 @@
 <div id="spSettingsContainer" class="spSettingsContainer">
-	<button ng-click="addModule($event)">Add Module</button>
-	<div class="moduleSection">
+	<link rel="stylesheet" type="text/css" href="css/settings-admin.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
-      <span ng-repeat="module in modules | orderBy:'name'" >
-
-      <div class="singleModuleWrapper">
-		<button class="editModuleButton" ng-click="editModule(module)">Module: {{module.name}}</button>
-		<button class="deleteModuleButton" ng-click="deleteModule(module)">X</button>
-		<div class="moduleWordsWrapper">
-			<div class="singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
-		</div>
-      </span>
+	<div class="logoContainerPanel">
+		<div class="logo"></div>
+		<!-- <img class="logo" src="images/logo_settings_admin.svg" alt="logo" width="170px"> -->
 	</div>
+	<div class="topbarPanel">
+		<div class="plusButton" ng-click="addModule($event)"></div>
+		<div class="logoutButton"></div>
+	</div>
+	<div class="leftPanel">
+		<h1 id="wordListsButton" class="white">Word Lists</h1>
+		<h1 id="tangibleLibraryButton" class="white">Tangible Library</h1>
+		<div class="rightArrow"></div>
+	</div>
+	<div class="userPhoto">
+		<img src="http://miniplanet.us/wp-content/uploads/2016/09/Donald-Trump-Smiling.001.jpg" alt="trump" height="160px" >
+	</div>
+	<div class="userPhotoOverlayPanel"></div>
+	<h1 id="photoLabel" class="white">Donald Trump</h1>
+
+
+	<div class="mainPanel">
+		<!-- <button ng-click="addModule($event)">Add Module</button> -->
+		<p id="mainPanelTitle" class="darkBlue">Word Lists</p>
+		<
+		<div class="wordListContainer">
+			<span ng-repeat="module in modules | orderBy:'name'" >
+			<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Module: {{module.name}}</div> -->
+
+	      <div class="singleModuleWrapper">
+			<button class="editModuleButton" ng-click="editModule(module)">Module: {{module.name}}</button>
+			<button class="deleteModuleButton" ng-click="deleteModule(module)">X</button>
+			<div class="moduleWordsWrapper">
+				<div class="singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
+			</div>
+	      </span>
+		</div>
+		<!-- <div class="moduleSection">
+
+	      
+		</div> -->
+	</div>
+
 </div>
