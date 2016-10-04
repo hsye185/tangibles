@@ -169,6 +169,8 @@ export class TangibleController extends AbstractTangibleController{
         this.tangibleLayer = new Konva.Layer();
         this.stage.add(this.deselectLayer, this.tangibleLayer, this.touchPointsLayer); //Left param on bottom, right on top
         this.stage.getContent().addEventListener('touchstart', this.onTouch.bind(this));
+
+        this.endPointer = 0;
     }
 
     onDeselected() {
@@ -378,6 +380,14 @@ export class TangibleController extends AbstractTangibleController{
      * @returns {number}
      */
 
+    addLetter(letter) {
+        var tr = document.getElementById("tableRow");
+        var cells = tr.cells;
+        cells[this.endPointer].innerHTML = letter;
+
+        this.endPointer = this.endPointer + 1;
+    }
+
     onTouch(event) {
         if (this.enable) {
             let points = this.toPoints(event.touches);
@@ -393,16 +403,21 @@ export class TangibleController extends AbstractTangibleController{
                     let template = this.library.tangibles[closestMatch.target];
 
                     let position = Points.getCentroid(scaledPoints);
+
                     let orientation = Points.getOrientation(points) - Points.getOrientation(template.registrationPoints); //current-original orientation
 
                     let id = Random.id();
                     let instance = {type: closestMatch.target, position: position, orientation: orientation, zIndex: 0};
                     this.diagram.tangibles[id] = instance;
                     this.addVisual(id, instance.type, instance, template, this.stage);
+
+                    this.addLetter(template.name);
                 }
             }
 
             this.stage.batchDraw();
         }
     }
+
+
 }

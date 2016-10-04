@@ -82,6 +82,16 @@ p {
   top: 64px;
 }
 
+#tangibleContainer
+{
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 65%;
+  left: 40%;
+  background-color: red;
+}
+
 .login-container
 {
   background-size: cover;

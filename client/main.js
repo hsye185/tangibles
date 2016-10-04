@@ -4,6 +4,7 @@ import ngMaterial from 'angular-material';
 import angularUiRouter from 'angular-ui-router';
 import spellingApp from '../imports/components/spHome/spHome';
 import setup from '../imports/components/spSetup/spSetup';
+import play from '../imports/components/spPlay/spPlay';
 import home from '../imports/components/tgHome/tgHome';
 import diagram from '../imports/components/tgDiagram/tgDiagram';
 import libraries from '../imports/components/tgLibraries/tgLibraries';
@@ -20,7 +21,7 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY',
 });
 
-angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, setup.name])
+angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, setup.name, play.name])
     .constant("$const", {
         "APP": "Tangibles",
         "NEW": "New diagram",
@@ -101,6 +102,29 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
                     }
                 },
                 resolve: resolve
+            })
+            .state('play', {
+                url: "/play",
+                views: {
+                    'main-view': {
+                        component: play.name
+                    }
+                },
+                resolve: resolve,
+                onEnter: ['$tgSharedData', function ($tgSharedData) {
+                    $tgSharedData.data.stateName = 'play';
+                }]
+            })
+            .state('playDiagram', {
+                url: "/dg/:diagramId/:isNewDiagram/:libraryId",
+                views: {
+                    'main-view': {
+                        component: diagram.name
+                    }
+                },
+                onEnter: ['$tgSharedData', function ($tgSharedData) {
+                    $tgSharedData.data.stateName = 'playDiagram';
+                }]
             })
             .state('home.diagram', {
                 url: "/diagram/:diagramId/:isNewDiagram/:libraryId",
