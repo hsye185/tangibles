@@ -1,6 +1,9 @@
 node_modules/
 Meteor
 .idea
+*/.DS_Store
+.DS_Store
+.DS_Store?
 fullchain.pem
 privkey.pem
 settings.json
