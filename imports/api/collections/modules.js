@@ -10,10 +10,7 @@ export const moduleExists = function (moduleId) {
 
 Meteor.methods({
     'modules.insert' (module) {
-        // if (!Meteor.userId())
-        //     throw new Meteor.Error('not-authorized');
-
-        Modules.insert({_id: Random.id(), name: module.name, words: module.words});
+        Modules.insert(module);
     },
     'modules.remove' (moduleId) {
         if (moduleExists(moduleId)) {
@@ -31,6 +28,16 @@ Meteor.methods({
         }
         else {
             throw new Meteor.Error('The following module doesnt exist on the db:' + moduleId);
+        }
+    },
+    'modules.updateModule' (module) {
+        if (moduleExists(module._id)) {
+            Modules.update(module._id, {
+                $set: {name: module.name, words: module.words},
+            });
+        }
+        else {
+            throw new Meteor.Error('The following module doesnt exist on the db:' + module._id);
         }
     },
     'modules.addWord' (moduleId, word) {
@@ -54,13 +61,21 @@ Meteor.methods({
         else {
             throw new Meteor.Error('The following module doesnt exist on the db:' + moduleId);
         }
+    },
+    'modules.deleteModule' (moduleId) {
+        Modules.remove({
+            _id: moduleId
+        });
+    },
+    'modules.deleteEntireCollection' (param) {
+        Modules.remove({});
     }
 
 });
 
 if (Meteor.isServer) {
     Meteor.publish('modules', function () {
-        Modules.find();
+        return Modules.find({});
     });
 
     Modules.allow({

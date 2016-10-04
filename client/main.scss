@@ -261,6 +261,9 @@ img {
       font-family: 'Calibri', sans-serif;
       color: $black;
     }
+      .deleteWordIcon{
+        color: darkred;
+      }
 
     h1 {
       font-size: 32px;
@@ -320,4 +323,28 @@ img {
       }
     }
 }
+}
+.spSettingsContainer{
+  .singleModuleWrapper{
+      border: 2px solid blue;
+      width: 300px;
+      margin-bottom: 20px;
+      margin-left: 20px;
+      .editModuleButton{
+        width: calc(100% - 30px);
+      }
+      .deleteModuleButton{
+        float: right;
+        width: 30px;
+      }
+      .moduleWordsWrapper{
+          border-top: 2px solid blue;
+      }
+      .singleModuleWordDiv {
+        padding-left: 5px;
+      }
+  }
+}
+.md-title{
+  color: black;
 }
