@@ -54,7 +54,7 @@ class SPAddModuleDialogCtrl {
         }
         $scope.deleteWord = function(index) {   
             $scope.currentModule.words.splice(index, 1);
-        }    
+        }  
     }
 }
 class SPSettingsCtrl {
@@ -136,6 +136,10 @@ class SPSettingsCtrl {
             }, function() {
                  
             });            
+        }
+        $scope.getNextBackgroundNumber = function(index){
+            var i = index % 6;
+          return i;
         }   
     }
 }

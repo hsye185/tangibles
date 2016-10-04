@@ -26,17 +26,21 @@
 	<div class="mainPanel">
 		<!-- <button ng-click="addModule($event)">Add Module</button> -->
 		<p id="mainPanelTitle" class="darkBlue">Word Lists</p>
-		
 		<div class="wordListContainer">
-			<span ng-repeat="module in modules | orderBy:'name'" >
+			<div class="row">
+				<span class="col-sm-4" ng-repeat="module in modules | orderBy:'name'" >
 
-	      <div class="singleModuleWrapper">
-			<button class="editModuleButton" ng-click="editModule(module)">Module: {{module.name}}</button>
-			<button class="deleteModuleButton" ng-click="deleteModule(module)">X</button>
-			<div class="moduleWordsWrapper">
-				<div class="singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
-			</div>
-	      </span>
+			      <div class="singleModuleWrapper">
+
+					<button class="editModuleButton background-{{getNextBackgroundNumber($index)}}" ng-click="editModule(module)">Module: {{module.name}}</button>
+					<!-- <button class="deleteModuleButton" ng-click="deleteModule(module)">X</button> -->
+					<div class="moduleWordsWrapper">
+						<div class="singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
+					</div>
+
+			      </span>
+
+	  		</div>
 			
 		</div>
 		<!-- <div class="moduleSection">
@@ -44,5 +48,8 @@
 	      
 		</div> -->
 	</div>
+
+	<script src="js/settings-admin.js"></script>
+
 
 </div>
