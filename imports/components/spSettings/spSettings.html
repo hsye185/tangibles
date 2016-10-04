@@ -1,6 +1,9 @@
 <div id="spSettingsContainer" class="spSettingsContainer">
 	<link rel="stylesheet" type="text/css" href="css/settings-admin.css">
 	<link rel="stylesheet" type="text/css" href="css/font.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<div class="logoContainerPanel">
 		<div class="logo"></div>
 		<!-- <img class="logo" src="images/logo_settings_admin.svg" alt="logo" width="170px"> -->
@@ -10,8 +13,8 @@
 		<div class="logoutButton"></div>
 	</div>
 	<div class="leftPanel">
-		<h1 id="wordListsButton" class="white">Word Lists</h1>
-		<h1 id="tangibleLibraryButton" class="white">Tangible Library</h1>
+		<p id="wordListsButton" class="white">Word Lists</p>
+		<p id="tangibleLibraryButton" class="white">Tangible Library</p>
 		<div class="rightArrow"></div>
 	</div>
 	<div class="userPhoto">
@@ -20,14 +23,12 @@
 	<div class="userPhotoOverlayPanel"></div>
 	<h1 id="photoLabel" class="white">Donald Trump</h1>
 
-
 	<div class="mainPanel">
 		<!-- <button ng-click="addModule($event)">Add Module</button> -->
 		<p id="mainPanelTitle" class="darkBlue">Word Lists</p>
-		<
+		
 		<div class="wordListContainer">
 			<span ng-repeat="module in modules | orderBy:'name'" >
-			
 
 	      <div class="singleModuleWrapper">
 			<button class="editModuleButton" ng-click="editModule(module)">Module: {{module.name}}</button>
@@ -36,6 +37,7 @@
 				<div class="singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
 			</div>
 	      </span>
+			
 		</div>
 		<!-- <div class="moduleSection">
 

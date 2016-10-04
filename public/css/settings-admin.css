@@ -49,8 +49,8 @@
   font-size : 18px;
   letter-spacing : 0.45px;
 
-  position: relative;
-  top: 20px;
+  position: absolute;
+  top: 45px;
   left:35px;
 }
 
@@ -59,8 +59,8 @@
 	background-repeat: no-repeat;
 	width: 40px;
     height: 25px;
-    position: relative;
-    top: -106px;
+    position: absolute;
+    top: 45px;
     left: 140px;
 }
 
@@ -69,8 +69,8 @@
   font-size : 18px;
   letter-spacing : 0.45px;
 
-	position: relative;
-  top: 20px;
+	position: absolute;
+  top: 110px;
   left:35px;
 }
 
