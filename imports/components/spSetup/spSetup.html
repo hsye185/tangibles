@@ -5,11 +5,9 @@
 <form>
     <input type="button" value="Back" onClick="history.go(-1);return true;">
     <br>
-    Name:<input type="text" name="firstname" value="">
+    Name: <input type="text" name="firstname" value="">
     <br>
-    Difficulty:<input type="text" name="lastname" value="">
-    <br>
-    Theme:<input type="text" name="lastname" value="">
+    Grade: <select ng-model="selectedGrade" ng-options="module for module in modules"></select>
     <br>
     <input type="submit" value="Save" ui-sref="play">
     <br>
