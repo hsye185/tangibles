@@ -1,3 +1,15 @@
 <div id="spSettingsContainer" class="spSettingsContainer">
 	<button ng-click="addModule($event)">Add Module</button>
+	<div class="moduleSection">
+
+      <span ng-repeat="module in modules | orderBy:'name'" >
+
+      <div class="singleModuleWrapper">
+		<button class="editModuleButton" ng-click="editModule(module)">Module: {{module.name}}</button>
+		<button class="deleteModuleButton" ng-click="deleteModule(module)">X</button>
+		<div class="moduleWordsWrapper">
+			<div class="singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
+		</div>
+      </span>
+	</div>
 </div>
