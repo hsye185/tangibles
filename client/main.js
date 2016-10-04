@@ -119,17 +119,6 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
                     $tgSharedData.data.stateName = 'play';
                 }]
             })
-            .state('playDiagram', {
-                url: "/dg/:diagramId/:isNewDiagram/:libraryId",
-                views: {
-                    'main-view': {
-                        component: diagram.name
-                    }
-                },
-                onEnter: ['$tgSharedData', function ($tgSharedData) {
-                    $tgSharedData.data.stateName = 'playDiagram';
-                }]
-            })
             .state('home.diagram', {
                 url: "/diagram/:diagramId/:isNewDiagram/:libraryId",
                 views: {
