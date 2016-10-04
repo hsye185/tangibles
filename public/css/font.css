@@ -11,8 +11,16 @@
     src: url(../fonts/Roboto-Light.ttf);
 }
 @font-face {
+    font-family: robotoLightItalic;
+    src: url(../fonts/Roboto-LightItalic.ttf);
+}
+@font-face {
     font-family: robotoThin;
     src: url(../fonts/Roboto-Thin.ttf);
+}
+@font-face {
+    font-family: robotoThinItalic;
+    src: url(../fonts/Roboto-ThinItalic.ttf);
 }
 
 .darkBlue{

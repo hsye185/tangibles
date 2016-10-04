@@ -32,11 +32,14 @@
 
 			      <div class="singleModuleWrapper">
 
-					<button class="editModuleButton background-{{getNextBackgroundNumber($index)}}" ng-click="editModule(module)">Module: {{module.name}}</button>
-					<!-- <button class="deleteModuleButton" ng-click="deleteModule(module)">X</button> -->
-					<div class="moduleWordsWrapper">
-						<div class="singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
+					<button class="editModuleButton background-{{getNextBackgroundNumber($index)}}" ng-click="editModule(module)">{{module.name}}</button>
+					<button class="deleteModuleButton" ng-click="deleteModule(module)">X</button>
+					<div class ="row">
+						<div class="moduleWordsWrapper">
+							<div class="col-sm-4 singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
+						</div>
 					</div>
+					
 
 			      </span>
 
