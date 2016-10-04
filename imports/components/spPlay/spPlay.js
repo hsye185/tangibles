@@ -32,29 +32,8 @@ class SPPlayCtrl {
 
         this.libraryWatch = $scope.$watch('spPlay.remoteLibrary', this.openNewDiagram.bind(this));
 
-        this.createUnderlineTable("example");
 
     }
-
-    createUnderlineTable(word)
-    {
-
-        var list = document.getElementById("tableRow");
-
-        for (var i = 0; i < word.length; i++) {
-            // Create the list item:
-            var item = document.createElement('td');
-
-            // Set its contents:
-            //item.appendChild(document.createTextNode("A"));
-
-            // Add it to the list:
-            list.appendChild(item);
-        }
-
-        var div = document.getElementById("listDiv").appendChild(list);
-    }
-
     openNewDiagram(newVal, oldVal)
     {
         if(newVal != undefined && this.isNewDiagram)

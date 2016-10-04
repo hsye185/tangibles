@@ -5,6 +5,37 @@ $black: #2E3641;
 
 //TODO: separate into separate files
 
+
+.container{
+  height: 100%;
+  .mainView{
+    height: 100%;
+  }
+}
+.spPlayContainer{
+  height: 100%;
+  .top{
+    height: 10%;
+    background-color: bisque;
+  }
+  .middle{
+    height: 60%;
+    background-color: burlywood;
+  }
+  .bottom{
+    height: 30%;
+    background-color: bisque;
+    text-align: center;
+    padding-top: 10px;
+    .undoButton{
+      display: inline-block;
+    }
+    .speakButton{
+      display: inline-block;
+    }
+  }
+}
+
 .white
 {
   fill: white;
@@ -86,10 +117,10 @@ p {
 {
   height: 200px;
   width: 200px;
-  position: absolute;
   top: 65%;
   left: 40%;
   background-color: red;
+  display: inline-block;
 }
 
 .login-container
