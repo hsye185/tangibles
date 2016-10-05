@@ -170,7 +170,7 @@ export class TangibleController extends AbstractTangibleController{
         this.stage.add(this.deselectLayer, this.tangibleLayer, this.touchPointsLayer); //Left param on bottom, right on top
         this.stage.getContent().addEventListener('touchstart', this.onTouch.bind(this));
 
-        this.endPointer = 0;
+        this.selectedLetter = "";
     }
 
     onDeselected() {
@@ -380,12 +380,8 @@ export class TangibleController extends AbstractTangibleController{
      * @returns {number}
      */
 
-    addLetter(letter) {
-        var tr = document.getElementById("tableRow");
-        var cells = tr.cells;
-        cells[this.endPointer].innerHTML = letter;
-
-        this.endPointer = this.endPointer + 1;
+    selectLetter(letter) {
+        this.selectedLetter = letter;
     }
 
     onTouch(event) {
@@ -411,11 +407,11 @@ export class TangibleController extends AbstractTangibleController{
                     this.diagram.tangibles[id] = instance;
                     this.addVisual(id, instance.type, instance, template, this.stage);
 
-                    this.addLetter(template.name);
+                    this.selectLetter(template.name[0]);
                 }
             }
 
-            this.stage.batchDraw();
+            //this.stage.batchDraw();
         }
     }
 

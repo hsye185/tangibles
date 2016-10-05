@@ -161,13 +161,8 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
     };
     return service;
 }).factory('$spGameData', function () {
-    let gameService = {
-        gameData: {
     var playerName = 'carlo';
     return playerName;
-        }
-    };
-    return gameService;
 }).service('$tgImages', Images);
 
 function onReady() {
