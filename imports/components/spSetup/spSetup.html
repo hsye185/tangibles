@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
+  <head>
+  </head>
 <body>
 
-<form>
+
     <input type="button" value="Back" onClick="history.go(-1);return true;">
     <br>
-    Name:<input type="text" name="firstname" value="">
+    Name: <input type="text" name="firstname" value="" ng-module="playerName">
     <br>
-    Difficulty:<input type="text" name="lastname" value="">
-    <br>
-    Theme:<input type="text" name="lastname" value="">
+    Module: <select ng-init="selectedModule || options[0].name" ng-model="selectedModule" ng-options="module.name for module in modules"></select>
     <br>
     <input type="submit" value="Save" ui-sref="play">
     <br>
-</form>
+
+</body>

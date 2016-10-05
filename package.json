@@ -22,7 +22,8 @@
     "lodash": "^4.12.0",
     "meteor-node-stubs": "~0.2.0",
     "object.entries": "^1.0.3",
-    "pubsub-js": "^1.5.3"
+    "pubsub-js": "^1.5.3",
+    "speak-tts": "^0.2.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6"

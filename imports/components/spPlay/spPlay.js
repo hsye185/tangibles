@@ -5,6 +5,7 @@ import {TangibleController} from '../../api/tangibles/controller';
 import {Diagrams} from '../../api/collections/diagrams.js';
 import {Libraries} from '../../api/collections/libraries.js';
 import 'pubsub-js/src/pubsub';
+import Speech from 'speak-tts';
 
 class SPPlayCtrl {
     constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const) {
@@ -15,7 +16,7 @@ class SPPlayCtrl {
         this.$const = $const;
         this.$state = $state;
         this.sharedData = $tgSharedData.data;
-        this.tangibleController = new TangibleController('tangibleContainer');
+        $scope.tangibleController = new TangibleController('tangibleContainer');
         this.diagramId = Random.id();
         this.libraryId = this.$const.DEFAULT_LIBRARY_ID;
         this.isNewDiagram = "true";
@@ -75,8 +76,14 @@ class SPPlayCtrl {
             
         };
         $scope.speakButton = function(){
-            
-        }
+            Speech.init();
+
+            Speech.speak({
+                text: $scope.wordList[$scope.currentWordIndex],
+                onError: (e) => {console.log('sorry an error occured.', e)}, // optionnal error callback
+                onEnd: () => {console.log('your text has successfully been spoken.')} // optionnal onEnd callback
+            })
+        };
         $scope.addLetter = function(newLetter){
             if($scope.gameOver){
                 alert("Game Over! Please return to level select");
@@ -130,6 +137,14 @@ class SPPlayCtrl {
             }
         }
 
+        $scope.$watch(
+            function() { $scope.tangibleController.selectedLetter },
+
+            function(newValue, oldValue) {
+                $scope.addLetter(newValue);
+            }
+        );
+
     }
 
     openNewDiagram(newVal, oldVal)
@@ -151,7 +166,7 @@ class SPPlayCtrl {
 
             this.sharedData.diagramName = this.localDiagram.name;
             PubSub.publish('updateName', this.localDiagram.name);
-            this.tangibleController.openDiagram(this.localDiagram, angular.copy(newVal), this.$tgImages);
+            this.$scope.tangibleController.openDiagram(this.localDiagram, angular.copy(newVal), this.$tgImages);
         }
     }
 
