@@ -77,7 +77,8 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
             }
         };
 
-        $urlRouterProvider.otherwise('home/diagram///');
+        // $urlRouterProvider.otherwise('home/diagram///');
+        $urlRouterProvider.otherwise('spelling_app');
 
         $stateProvider
             .state('home', {
