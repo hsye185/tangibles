@@ -9,8 +9,8 @@
 		<!-- <img class="logo" src="images/logo_settings_admin.svg" alt="logo" width="170px"> -->
 	</div>
 	<div class="topbarPanel">
-		<div class="plusButton" ng-click="addModule($event, 0)"></div>
-		<div class="logoutButton"></div>
+		<div tabindex="-1" class="plusButton" ng-click="addModule($event, 0)"></div>
+		<div tabindex="-1" class="logoutButton"></div>
 	</div>
 	<div class="leftPanel">
 		<p id="wordListsButton" class="white">Word Lists</p>
@@ -32,9 +32,10 @@
 
 			      <div class="singleModuleWrapper">
 			      	
-			      	<div class="binWhiteButton deleteModuleButton" ng-click="deleteModule(module)"></div>
+			      	<div tabindex="-1" class="binWhiteButton deleteModuleButton" ng-click="deleteModule(module)"></div>
 
 					<div class="editModuleButton background-{{getNextBackgroundNumber($index)}}" >{{module.name}}</div>
+					<div tabindex="-1" class="editModuleButtonFake" ng-click="editModule(module,$index)"></div>
 					<!-- <button class="binWhiteButton deleteModuleButton" ng-click="deleteModule(module)"></button> -->
 					<div tabindex="-1" class ="row" ng-click="editModule(module,$index)">
 						<div class="moduleWordsWrapper" >

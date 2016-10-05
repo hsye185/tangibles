@@ -17,7 +17,7 @@ class SPAddModuleDialogCtrl {
         $scope.newWord = "";
         $scope.currentModule = {
             _id: Random.id(),
-            name: '',
+            name: 'List Name',
             words: []
         };
         if(moduleBeingEdited){
@@ -88,7 +88,7 @@ class SPSettingsCtrl {
                 targetEvent: event,
                 clickOutsideToClose:true,
                 locals : {
-                    dialogName: "Add Module",
+                    dialogName: "List Name",
                     moduleBeingEdited: null,
                     backgroundIndex: index
                 }
@@ -111,7 +111,7 @@ class SPSettingsCtrl {
                 targetEvent: event,
                 clickOutsideToClose:true,
                 locals : {
-                    dialogName: "Edit Module",
+                    dialogName: 'Edit Module',
                     moduleBeingEdited: module,
                     backgroundIndex: index
                 }

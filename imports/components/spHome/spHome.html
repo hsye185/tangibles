@@ -10,22 +10,26 @@
 	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<link rel="stylesheet" type="text/css" href="css/font.css">
 
-	<div class="topPanel">
+	<div id="topPanel" class="topPanel">
 		
 	</div>
 
-	<h1 id="playButton" class="darkBlue" ui-sref="play">PLAY</h1>
-	<h2 id="settingsButton" class="darkBlue" ui-sref="settings">Settings</h2>
-	<h2 id="creditsButton" class="darkBlue">Credits</h2>
+	
+	<button tabindex="-1" id="playButton" class="darkBlue" ng-click="gotoLevelSelection()">PLAY</button>
+	
+	<button tabindex="-1" id="settingsButton" class="darkBlue" ng-click="gotoSettings()">Settings</button>
+	<button tabindex="-1" id="creditsButton" class="darkBlue" ng-click="gotoCredits()">Credits</button>
 	
 
-	<div class="midPanel">
+	<div id="midPanel" class="midPanel">
 		
 	</div>
-	<div class="botPanel">
-		<h2 id="quitButton" class="white">Quit</h2>
+	<div id="botPanel" class="botPanel">
+		<h2 tabindex="-1" id="quitButton" class="white">Quit</h2>
 	</div>
 
-	<img src="images/Logo_round.png" alt="some_text" class="logo">
+	<img src="images/logo_round.svg" id="logo" alt="some_text" class="logo">
+	<a id="title">STAMP-A-LETTER</a>
+	<a id="subTitle">Tangible Spelling Tutor</a>
 	
 </div>
