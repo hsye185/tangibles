@@ -285,6 +285,59 @@ img {
   }
 }
 .spAddModuleDialogClass{
+
+  .topPanel{
+
+    width: 110%;
+    text-align:center
+
+  }
+
+  .background-dialog-0{
+    background-image: url("images/background-0.svg");
+    background-repeat: no-repeat;
+    background-size: 101%;
+      margin-left: -1%;
+
+  }
+
+  .background-dialog-1{
+    background-image: url("images/background-1.svg");
+    background-repeat: no-repeat;
+    background-size: 101%;
+      margin-left: -1%;
+  }
+
+  .background-dialog-2{
+     background-image: url("images/background-2.svg");
+    background-repeat: no-repeat;
+    background-size: 101%;
+      margin-left: -1%;
+  }
+
+  .background-dialog-3{
+    background-image: url("images/background-3.svg");
+    background-repeat: no-repeat;
+    background-size: 101%;
+      margin-left: -1%;
+  }
+
+  .background-dialog-4{
+    background-image: url("images/background-4.svg");
+    background-repeat: no-repeat;
+    background-size: 101%;
+      margin-left: -1%;
+  }
+
+  .background-dialog-5{
+    background-image: url("images/background-5.svg");
+    background-repeat: no-repeat;
+    background-size: 101%;
+      margin-left: -1%;
+
+
+  }
+
   width: 800px;
   .NewModuleForm{
       * {
@@ -298,6 +351,29 @@ img {
 
     h1 {
       font-size: 32px;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
+    .listNameInput{
+    color: #00072D;
+    text-align: center;
+      font-size: 32px;
+      border: 0;
+      margin-left: -1%;
+      margin-bottom: 15px;
+      margin-top: 10px;
+
+      background: transparent;
+      border-bottom: 1px solid white;
+      width: 200px;
+      transition: all .3s ease;
+      
+      &:focus, &:active {
+        outline: 0;
+        width: 210px;
+        border-bottom-color: #00072D;
+      }
     }
 
     input {

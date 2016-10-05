@@ -80,7 +80,7 @@ class SPSettingsCtrl {
             $scope.$apply();
             // $scope.modules = cursor.toArray();
         }, millisecondsToWait, $scope);
-        $scope.addModule = function(event){
+        $scope.addModule = function(event, index){
             $mdDialog.show({
                 controller: SPAddModuleDialogCtrl,
                 template: dialog,
@@ -89,7 +89,8 @@ class SPSettingsCtrl {
                 clickOutsideToClose:true,
                 locals : {
                     dialogName: "Add Module",
-                    moduleBeingEdited: null
+                    moduleBeingEdited: null,
+                    backgroundIndex: index
                 }
             })
             .then(function(answer) {
