@@ -14,48 +14,6 @@ $black: #2E3641;
 }
 .spPlayContainer{
   height: 100%;
-  .top{
-    height: 10%;
-    background-color: cornsilk;
-  }
-  .middle{
-    height: 60%;
-    background-color: cornsilk;
-    text-align: center;
-    .progressUnit{
-      display: inline-block;
-      padding-left: 10px;
-      padding-right: 10px;
-      width: 180px;
-      .progressLetter{
-        font-size: 250px;
-      }
-      .progressUnderline{
-        height: 10px;
-      }
-      .redUnderline{
-        background-color: red;
-      }
-      .greenUnderline{
-        background-color: green;
-      }
-      .orangeUnderline{
-        background-color: orange;
-      }
-    }
-  }
-  .bottom{
-    height: 30%;
-    background-color: cornsilk;
-    text-align: center;
-    padding-top: 10px;
-    .undoButton{
-      display: inline-block;
-    }
-    .speakButton{
-      display: inline-block;
-    }
-  }
 }
 
 .white
@@ -135,15 +93,7 @@ p {
   top: 64px;
 }
 
-#tangibleContainer
-{
-  height: 200px;
-  width: 200px;
-  top: 65%;
-  left: 40%;
-  background-color: red;
-  display: inline-block;
-}
+
 
 .login-container
 {

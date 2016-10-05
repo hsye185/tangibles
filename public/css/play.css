@@ -1,0 +1,133 @@
+.middle{
+    height: 48%;
+    text-align: center;
+    background-color : transparent;
+  }
+
+.bottom{
+  height: 42%;
+  background-color: transparent;
+  text-align: center;
+  padding-top: 10px;
+  
+}
+
+.top{
+  height: 10%;
+  background-color: transparent;
+}
+
+.undoButton{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-right: 60px;
+  background-image: url("../images/undo_button.svg");
+  background-repeat: no-repeat; 
+  background-size: 100%;
+}
+
+.speakButton{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-left: 60px;
+  background-image: url("../images/speak_button.svg");
+  background-repeat: no-repeat; 
+  background-size: 100%;
+}
+
+.quitButton{
+  border: none;
+  background-color: transparent;
+  font-family : "robotoLight";
+  font-size : 25px;
+  letter-spacing : 1px;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.progressUnit{
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100px;
+  text-align: center;
+      
+}
+
+.progressLetter{
+  font-family : "robotoRegular";
+  font-size : 54px;
+  color : #00072D;
+  color : rgb(0, 7, 45);
+  position: absolute;
+  top: 31%;
+  margin-left: 37px;
+}
+.progressUnderline{
+  height: 10px;
+  position: absolute;
+  width: 100px; 
+  top: 40%;
+  /*padding-right: 20px;*/
+}
+.redUnderline{
+  background-image: url("../images/red_bar.svg");
+  background-repeat: no-repeat; 
+  background-size: 100px;
+}
+.greenUnderline{
+  background-image: url("../images/green_bar.svg"); 
+  background-repeat: no-repeat; 
+  background-size: 100px;
+}
+.orangeUnderline{
+  background-image: url("../images/gold_bar.svg"); 
+  background-repeat: no-repeat; 
+  background-size: 100px;
+}
+
+#tangibleContainer
+{
+  background-image: url("../images/gold_square.svg"); 
+  width: 256px;
+  height: 256px;
+  display: inline-block;
+}
+
+.borderDivGold{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background : -moz-radial-gradient(4.2% -18.75%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  background : -webkit-radial-gradient(4.2% -18.75%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  background : -webkit-gradient(radial,4.2% -18.75% ,0 , 4.2% -18.75%, 1419.81 ,color-stop(0,rgba(255, 213, 79, 1) ),color-stop(1,rgba(255, 160, 0, 1) ));
+  background : -o-radial-gradient(4.2% -18.75%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  background : -ms-radial-gradient(4.2% -18.75%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Stlye=2);"
+  background : radial-gradient(4.2% -18.75%, circle farthest-corner, rgba(255, 213, 79, 1) 0%, rgba(255, 160, 0, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
+
+}
+
+.mainPanelWhite{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: calc(100% - 30px); 
+  height: calc(100% - 30px);
+
+  background : -moz-radial-gradient(-15.98% 25.69%, circle farthest-corner, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  background : -webkit-radial-gradient(-15.98% 25.69%, circle farthest-corner, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  background : -webkit-gradient(radial,-15.98% 25.69% ,0 , -15.98% 25.69%, 1377.56 ,color-stop(0,rgba(255, 255, 255, 1) ),color-stop(1,rgba(255, 248, 225, 1) ));
+  background : -o-radial-gradient(-15.98% 25.69%, circle farthest-corner, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  background : -ms-radial-gradient(-15.98% 25.69%, circle farthest-corner, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Stlye=2);"
+  background : radial-gradient(-15.98% 25.69%, circle farthest-corner, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
+}
