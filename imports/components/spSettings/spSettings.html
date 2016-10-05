@@ -36,7 +36,7 @@
 
 					<div class="editModuleButton background-{{getNextBackgroundNumber($index)}}" >{{module.name}}</div>
 					<!-- <button class="binWhiteButton deleteModuleButton" ng-click="deleteModule(module)"></button> -->
-					<div class ="row" ng-click="editModule(module,$index)">
+					<div tabindex="-1" class ="row" ng-click="editModule(module,$index)">
 						<div class="moduleWordsWrapper" >
 							<div class="col-sm-4 singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
 						</div>
