@@ -22,6 +22,7 @@ class SPPlayCtrl {
         $scope.CORRECT = 1;
         $scope.INCORRECT = 2;
         $scope.UNATTEMPTED = 3; 
+        $scope.gameOver = false;
 
         // this.wordList = ["cab", "hat", "car", "shirt", "glass"];
 
@@ -45,11 +46,13 @@ class SPPlayCtrl {
         this.libraryWatch = $scope.$watch('spPlay.remoteLibrary', this.openNewDiagram.bind(this));
 
         //list passed in from level screen, or grade words passed in then random assigned 3 etc
+        //------ PASSED IN FROM LEVEL SCREEEN
         $scope.wordList = ["super", "shirt"];
-        $scope.currentUndos = 3;
         $scope.maxUndos = 3;
-        $scope.currentWordIndex = 0;
+        //-------
 
+        $scope.currentUndos = $scope.maxUndos;
+        $scope.currentWordIndex = 0;
         $scope.currentWordSplit = $scope.wordList[$scope.currentWordIndex].split("");
         $scope.currentWordSequence = $scope.getEmptySequence($scope.currentWordSplit.length);
         $scope.currentWordProgressIndex = 0;
@@ -57,17 +60,28 @@ class SPPlayCtrl {
        
 
         $scope.undoButton = function(){
-            if($scope.undoCount == 0){
-
+            if($scope.gameOver){
+                alert("Game Over! Please return to level select");
+                return;
             }
-            $scope.currentWordProgressIndex--;
-            $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
-            $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+            if($scope.currentUndos == 0){
+                alert("You've ran out of Undos");
+            }else{
+                $scope.currentWordProgressIndex--;
+                $scope.currentUndos--;
+                $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
+                $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+            }
+            
         };
         $scope.speakButton = function(){
-            // $scope.currentProgress.push({letter: "e", isCorrect: true});
+            
         }
         $scope.addLetter = function(newLetter){
+            if($scope.gameOver){
+                alert("Game Over! Please return to level select");
+                return;
+            }
             //checkiflast last letter, trying to write
             if($scope.currentWordProgressIndex == $scope.currentWordSplit.length){
                 alert("You can't add another letter, the word currently has errors");
@@ -78,6 +92,14 @@ class SPPlayCtrl {
                     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.CORRECT;
                 }else{
                     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.INCORRECT;
+                    if($scope.currentUndos == 0){
+                        $scope.gameOver = true;
+                        var millisecondsToWait = 100;
+                        setTimeout(function() {
+                           alert("Game Over: You've run out of Undos and have an error in your word");
+                        }, millisecondsToWait);
+                        
+                    }
                 }
                 
                 //check if the letter added was the last one
