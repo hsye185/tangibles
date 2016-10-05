@@ -136,7 +136,7 @@
   color : #00072D;
   color : rgb(0, 7, 45);
   position: absolute;
-  top: 31%;
+  top: calc((100% - 316px) / 2 - 15px);
   margin-left: 37px;
 }
 .progressUnderline{
