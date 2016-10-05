@@ -1,17 +1,29 @@
 <div id="spPlayContainer" class="spPlayContainer">
 
 	<div class="top">
-		<button class="quitButton">Quit</button>
+		<button class="quitButton inlineButton">Quit</button>
+		<button class="inlineButton" ng-click="addLetter('s')">S</button>
+		<button class="inlineButton" ng-click="addLetter('u')">U</button>
+		<button class="inlineButton" ng-click="addLetter('p')">P</button>
+		<button class="inlineButton" ng-click="addLetter('e')">E</button>
+		<button class="inlineButton" ng-click="addLetter('r')">R</button>
+		<button class="inlineButton" ng-click="addLetter('h')">H</button>
+		<button class="inlineButton" ng-click="addLetter('i')">I</button>
+		<button class="inlineButton" ng-click="addLetter('r')">R</button>
+		<button class="inlineButton" ng-click="addLetter('t')">T</button>
 	</div>
 
 	<div class="middle">
-		
+		<div class="progressUnit" ng-repeat="progressUnit in currentWordSequence">
+			<div class="progressLetter">{{progressUnit.letter}}</div>
+			<div class="progressUnderline" ng-class="{greenUnderline: progressUnit.status == CORRECT, redUnderline: progressUnit.status == INCORRECT, orangeUnderline: progressUnit.status == UNATTEMPTED}"></div>
+		</div>
 	</div>
 
 	<div class="bottom">
-		<button class="undoButton">Undo</button>
+		<button class="undoButton" ng-click="undoButton()">Undo</button>
 		<div class="tangibleContainer" id="tangibleContainer"></div>
-		<button class="speakButton">Speak</button>
+		<button class="speakButton" ng-click="speakButton()">Speak</button>
 	</div>
 	
 </div>
