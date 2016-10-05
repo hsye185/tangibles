@@ -10,9 +10,10 @@ import {Modules} from '../../api/collections/modules.js';
 import lodash from 'lodash';
 
 class SPAddModuleDialogCtrl {
-    constructor($scope, $mdDialog, $reactive, dialogName, moduleBeingEdited) {
+    constructor($scope, $mdDialog, $reactive, dialogName, moduleBeingEdited, backgroundIndex) {
         $reactive(this).attach($scope);
         $scope.dialogName = dialogName;
+        $scope.backgroundIndex = backgroundIndex;
         $scope.newWord = "";
         $scope.currentModule = {
             _id: Random.id(),
@@ -99,8 +100,9 @@ class SPSettingsCtrl {
             });
 
         }
-        $scope.editModule = function(module){
+        $scope.editModule = function(module,index){
             // alert(module.name);
+            index = index % 6;
             $mdDialog.show({
                 controller: SPAddModuleDialogCtrl,
                 template: dialog,
@@ -109,7 +111,8 @@ class SPSettingsCtrl {
                 clickOutsideToClose:true,
                 locals : {
                     dialogName: "Edit Module",
-                    moduleBeingEdited: module
+                    moduleBeingEdited: module,
+                    backgroundIndex: index
                 }
             })
             .then(function(answer) {
@@ -118,7 +121,10 @@ class SPSettingsCtrl {
                 $scope.modules.splice(index,1);
                 $scope.modules.push(answer);
             }, function() {
-              $scope.$apply();
+                if(!$scope.$$phase) {
+                  $scope.$apply();
+                }
+              
             });
         }
         $scope.deleteModule = function(module){

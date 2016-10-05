@@ -1,22 +1,27 @@
 <md-dialog aria-label="New Module" class="spAddModuleDialogClass">
+
+<link rel="stylesheet" type="text/css" ng-href="css/settings-dialog.css">
+  <link rel="stylesheet" type="text/css" ng-href="css/font.css">
   <form ng-cloak>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>{{dialogName}}</h2>
+    <!-- <md-toolbar> -->
+      <div class="topPanel background-{{backgroundIndex}}">
+        <!-- <a >{{dialogName}}</a>
         <span flex></span>
-        </md-button>
-      </div>
-    </md-toolbar>
+        </md-button> -->
 
-    <md-dialog-content>
-      <div class="md-dialog-content">
+        <span class="NewModuleForm">
 
-      <span class="NewModuleForm">
-
-        <h1>Module Name</h1> 
+        <!-- <h1>Module Name</h1>   -->
     
          <input type="text" name="moduleName" ng-model="currentModule.name" />
       </span>
+      </div>
+    <!-- </md-toolbar> -->
+
+    <!-- <md-dialog-content> -->
+      <div class="md-dialog-content">
+
+      
 
       <span class="NewModuleForm">
 
@@ -36,7 +41,7 @@
       </span>
 
       </div>
-    </md-dialog-content>
+    <!-- </md-dialog-content> -->
 
     <md-dialog-actions layout="row">
       <span flex></span>
