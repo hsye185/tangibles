@@ -24,11 +24,20 @@
 			</div>
 		</div>
 
-		<div class="bottom">
-			<div tabindex="-1" class="undoButton" ng-click="undoButton()"></div>
-			<div tabindex="-1" class="tangibleContainer" id="tangibleContainer"></div>
-			<div tabindex="-1" class="speakButton" ng-click="speakButton()"></div>
+		
+
+		<div tabindex="-1" class="undoButton" ng-click="undoButton()">
 		</div>
+		<P class="undoLabel">Undo</P>
+		<P class="undosLeftLabel">{{currentUndos}} Left</P>
+		<div tabindex="-1" class="tangibleContainer" id="tangibleContainer"></div>
+		<P class="tangibleContainerLabel">Stamp Here</P>
+		<div tabindex="-1" class="speakButton" ng-click="speakButton()"></div>
+		<P class="speakLabel">Say Word</P>
+		<P class="speaksLeftLabel">{{currentSpeaks}} Left</P>
+		<!-- <div class="bottom">
+			
+		</div> -->
 	</div>
 	
 </div>

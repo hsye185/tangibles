@@ -1,40 +1,112 @@
 .middle{
-    height: 48%;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+    height: 100%;
     text-align: center;
     background-color : transparent;
   }
 
 .bottom{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   height: 42%;
   background-color: transparent;
-  text-align: center;
   padding-top: 10px;
+  background-color: lightblue;
   
 }
 
 .top{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 10%;
   background-color: transparent;
 }
 
 .undoButton{
-  display: inline-block;
+  position: absolute;
+  bottom: 60px; 
+  left: calc(50% - 238px);
+  margin-left: -50px;
+
   width: 100px;
   height: 100px;
-  margin-right: 60px;
+  /*margin-right: 60px;*/
   background-image: url("../images/undo_button.svg");
   background-repeat: no-repeat; 
   background-size: 100%;
 }
 
+.undoLabel{
+  position: absolute;
+      bottom: 15px;
+    left: calc(50% - 238px);
+    margin-left: -14px;
+
+    font-family : "robotoLight";
+  font-size : 12px;
+  letter-spacing : 0.48px;
+  color : #00072D;
+  color : rgb(0, 7, 45);
+
+}
+
+.undosLeftLabel{
+  position: absolute;
+  bottom: 153px;
+  left: calc(50% - 252px);
+
+  font-family : "robotoLight";
+  font-size : 12px;
+  letter-spacing : 0.48px;
+  color : #00072D;
+  color : rgb(0, 7, 45);
+}
+
 .speakButton{
-  display: inline-block;
+  position: absolute;
+  bottom: 60px; 
+  left: calc(50% + 138px);
+  margin-left: -50px;
+
   width: 100px;
   height: 100px;
   margin-left: 60px;
   background-image: url("../images/speak_button.svg");
   background-repeat: no-repeat; 
   background-size: 100%;
+}
+
+.speakLabel{
+  position: absolute;
+  bottom: 15px;
+    left: calc(50% + 138px);
+    margin-left: 84px;
+
+    font-family : "robotoLight";
+  font-size : 12px;
+  letter-spacing : 0.48px;
+  color : #00072D;
+  color : rgb(0, 7, 45);
+}
+
+.speaksLeftLabel{
+  position: absolute;
+  bottom: 153px;
+  left: calc(50% + 232px);
+
+  font-family : "robotoLight";
+  font-size : 12px;
+  letter-spacing : 0.48px;
+  color : #00072D;
+  color : rgb(0, 7, 45);
+
 }
 
 .quitButton{
@@ -70,7 +142,7 @@
   height: 10px;
   position: absolute;
   width: 100px; 
-  top: 40%;
+  top: calc((100% - 316px) / 2 + 50px);
   /*padding-right: 20px;*/
 }
 .redUnderline{
@@ -91,14 +163,31 @@
 
 #tangibleContainer
 {
+  position: absolute;
+  bottom: 60px; 
+  left: 0;
+  right: 0;
+  margin: auto;
+
   background-image: url("../images/darkBlue_square.svg");
   width: 256px;
   height: 256px;
-  display: inline-block;
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: 100%;
   border: none;
+}
+
+.tangibleContainerLabel{
+  position: absolute;
+  bottom: 15px;
+  left: calc(50% - 34px);
+
+  font-family : "robotoLight";
+  font-size : 12px;
+  letter-spacing : 0.48px;
+  color : #00072D;
+  color : rgb(0, 7, 45);
 }
 
 .borderDivGold{
