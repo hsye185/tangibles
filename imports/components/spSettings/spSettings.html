@@ -31,11 +31,13 @@
 				<span class="col-sm-4" ng-repeat="module in modules | orderBy:'name'" >
 
 			      <div class="singleModuleWrapper">
+			      	
+			      	<div class="binWhiteButton deleteModuleButton" ng-click="deleteModule(module)"></div>
 
-					<button class="editModuleButton background-{{getNextBackgroundNumber($index)}}" ng-click="editModule(module)">{{module.name}}</button>
-					<button class="deleteModuleButton" ng-click="deleteModule(module)">X</button>
-					<div class ="row">
-						<div class="moduleWordsWrapper">
+					<div class="editModuleButton background-{{getNextBackgroundNumber($index)}}" >{{module.name}}</div>
+					<!-- <button class="binWhiteButton deleteModuleButton" ng-click="deleteModule(module)"></button> -->
+					<div class ="row" ng-click="editModule(module)">
+						<div class="moduleWordsWrapper" >
 							<div class="col-sm-4 singleModuleWordDiv" ng-repeat="word in module.words" >{{word}}</div>
 						</div>
 					</div>
