@@ -16,15 +16,37 @@ $black: #2E3641;
   height: 100%;
   .top{
     height: 10%;
-    background-color: bisque;
+    background-color: cornsilk;
   }
   .middle{
     height: 60%;
-    background-color: burlywood;
+    background-color: cornsilk;
+    text-align: center;
+    .progressUnit{
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 180px;
+      .progressLetter{
+        font-size: 250px;
+      }
+      .progressUnderline{
+        height: 10px;
+      }
+      .redUnderline{
+        background-color: red;
+      }
+      .greenUnderline{
+        background-color: green;
+      }
+      .orangeUnderline{
+        background-color: orange;
+      }
+    }
   }
   .bottom{
     height: 30%;
-    background-color: bisque;
+    background-color: cornsilk;
     text-align: center;
     padding-top: 10px;
     .undoButton{
@@ -360,4 +382,7 @@ img {
 }
 .md-title{
   color: black;
+}
+.inlineButton{
+  display: inline-block;
 }
