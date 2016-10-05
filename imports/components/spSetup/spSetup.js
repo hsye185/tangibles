@@ -5,9 +5,10 @@ import {TangibleController} from '../../api/tangibles/controller';
 import {Diagrams} from '../../api/collections/diagrams.js';
 import {Libraries} from '../../api/collections/libraries.js';
 import {Modules} from '../../api/collections/modules.js';
+import Speech from 'speak-tts';
 
 class SPSetupCtrl {
-    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const) {
+    constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
 
@@ -30,6 +31,30 @@ class SPSetupCtrl {
             // $scope.modules = cursor.toArray();
         }, millisecondsToWait, $scope);
 
+        $scope.playerName = '';
+        $scope.selectedModule = $scope.modules[0];
+
+        $scope.$watch(function($scope) { return $scope.playerName },
+            function() {
+
+            });
+        $scope.$watch(function($scope) { return $scope.selectedModule },
+            function() {
+
+            });
+
+    }
+
+    speak() {
+        //speak('hello world', {format:'mp3', filename:'/tmp/hello_world'});
+        
+        Speech.init();
+
+        Speech.speak({
+            text: 'Hello, how are you today ?',
+            onError: (e) => {console.log('sorry an error occured.', e)}, // optionnal error callback
+            onEnd: () => {console.log('your text has successfully been spoken.')} // optionnal onEnd callback
+        })
     }
 }
 
