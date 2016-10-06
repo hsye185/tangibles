@@ -6,6 +6,7 @@ import spellingApp from '../imports/components/spHome/spHome';
 import setup from '../imports/components/spSetup/spSetup';
 import settings from '../imports/components/spSettings/spSettings';
 import play from '../imports/components/spPlay/spPlay';
+import levelSelect from '../imports/components/spLevelSelect/spLevelSelect';
 import home from '../imports/components/tgHome/tgHome';
 import diagram from '../imports/components/tgDiagram/tgDiagram';
 import libraries from '../imports/components/tgLibraries/tgLibraries';
@@ -13,6 +14,7 @@ import entries from 'object.entries';
 import 'pubsub-js/src/pubsub';
 import {Images} from '../imports/components/tgImages/tgImages';
 import { Accounts } from 'meteor/accounts-base';
+import {Modules} from '../imports/api/collections/modules.js';
 
 if (!Object.entries) {
     entries.shim();
@@ -22,7 +24,7 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY',
 });
 
-angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, setup.name, settings.name, play.name])
+angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, setup.name, settings.name, play.name, levelSelect.name])
     .constant("$const", {
         "APP": "Tangibles",
         "NEW": "New diagram",
@@ -77,7 +79,8 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
             }
         };
 
-        $urlRouterProvider.otherwise('home/diagram///');
+        // $urlRouterProvider.otherwise('home/diagram///');
+        $urlRouterProvider.otherwise('spelling_app');
 
         $stateProvider
             .state('home', {
@@ -104,6 +107,15 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
                  views: {
                      'main-view': {
                          component: settings.name
+                     }
+                 },
+                 resolve: resolve
+             })
+            .state('levelSelect', {
+                 url: "/level_select",
+                 views: {
+                     'main-view': {
+                         component: levelSelect.name
                      }
                  },
                  resolve: resolve
@@ -160,9 +172,90 @@ angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.u
         }
     };
     return service;
-}).factory('$spGameData', function () {
-    var playerName = 'carlo';
-    return playerName;
+}).service('$gameStateService', function () {
+    this.playerName = "John Smith";
+    this.moduleName = "Grade 4";
+    this.moduleId = "K21313JSASDAD2111";
+    this.currentLevelId = 1;
+    this.levels = [
+    {
+        number: 1,
+        wordCount: 1,
+        maxUndos: 3,
+        partialCompletionRatio: 0.5 
+    },
+    {
+        number: 2,
+        wordCount: 2,
+        maxUndos: 1,
+        partialCompletionRatio: 0.5
+    },
+    {
+        number: 3,
+        wordCount: 2,
+        maxUndos: 3,
+        partialCompletionRatio: 0
+    }
+    ];
+    this.generateLevelInfo = function(){
+        // var millisecondsToWait = 100;
+        // let levelInformation = {
+        //     words: ["Default"],
+        //     maxUndos: 3,
+        //     partialCompletionRatio: 0.5
+        // }; 
+        let level = this.levels[this.currentLevelId];
+        // let module = Modules.findOne({name: this.moduleName});
+        let module = {
+            name: "Grade 4",
+            words: ["horse", "house", "giraffe", "puma", "dinosaur"]
+
+        };
+        let words = module.words;
+        let levelWords = []; 
+        while(levelWords.length != level.wordCount){
+            let index = Math.floor(Math.random() * words.length);
+            let wordForIndex = words[index];
+            if(levelWords.indexOf(wordForIndex) == -1){
+                levelWords.push(wordForIndex);
+            }
+        }
+        let levelInformation = {
+            words: levelWords,
+            maxUndos: level.maxUndos,
+            partialCompletionRatio: level.partialCompletionRatio
+        };
+        return levelInformation;
+        // let info = {
+        //     levels: this.levels,
+        //     currentLevelId: this.currentLevelId,
+        //     modules: Modules,
+        //     moduleName: this.moduleName,
+        //     isDone: false
+        // };
+        // setTimeout(function() {
+        //     let level = info.levels[info.currentLevelId];
+        //     let module = info.modules.findOne({name: info.moduleName});
+        //     let words = module.words;
+        //     let levelWords = []; 
+        //     while(levelWords.length != level.wordCount){
+        //         let index = Math.floor(Math.random() * words.length);
+        //         let wordForIndex = words[index];
+        //         if(levelWords.indexOf(wordForIndex) == -1){
+        //             levelWords.push(wordForIndex);
+        //         }
+        //     }
+        //     levelInformation = {
+        //         words: levelWords,
+        //         maxUndos: level.maxUndos,
+        //         partialCompletionRatio: level.partialCompletionRatio
+        //     };
+        //     info.isDone = true;
+        // }, millisecondsToWait, info);
+        
+        // return levelInformation;
+    };
+
 }).service('$tgImages', Images);
 
 function onReady() {
