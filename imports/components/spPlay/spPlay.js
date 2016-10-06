@@ -16,7 +16,7 @@ class SPPlayCtrl {
         this.$const = $const;
         this.$state = $state;
         this.sharedData = $tgSharedData.data;
-        $scope.tangibleController = new TangibleController('tangibleContainer');
+        
         this.diagramId = Random.id();
         this.libraryId = this.$const.DEFAULT_LIBRARY_ID;
         this.isNewDiagram = "true";
@@ -36,17 +36,6 @@ class SPPlayCtrl {
             return sequence;
         }
 
-        this.helpers({
-            remoteDiagram: ()=> {
-                return Diagrams.findOne({_id: this.getReactively('diagramId')});
-            },
-            remoteLibrary: ()=> {
-                return Libraries.findOne({_id: this.getReactively('libraryId')});
-            }
-        });
-
-        this.libraryWatch = $scope.$watch('spPlay.remoteLibrary', this.openNewDiagram.bind(this));
-
         //list passed in from level screen, or grade words passed in then random assigned 3 etc
         //------ PASSED IN FROM LEVEL SCREEEN
         $scope.levelInfo = $gameStateService.generateLevelInfo();
@@ -59,8 +48,6 @@ class SPPlayCtrl {
         $scope.currentWordSplit = $scope.wordList[$scope.currentWordIndex].split("");
         $scope.currentWordSequence = $scope.getEmptySequence($scope.currentWordSplit.length);
         $scope.currentWordProgressIndex = 0;
-
-       
 
         $scope.undoButton = function(){
             if($scope.gameOver){
@@ -78,7 +65,9 @@ class SPPlayCtrl {
             
         };
         $scope.speakButton = function(){
-            Speech.init();
+            Speech.init({
+                rate : 0.5,
+            });
 
             Speech.speak({
                 text: $scope.wordList[$scope.currentWordIndex],
@@ -137,7 +126,22 @@ class SPPlayCtrl {
                 }
                 $scope.currentWordProgressIndex++;
             }
+            $scope.$apply();
         }
+
+        $scope.tangibleController = new TangibleController('tangibleContainer', this);
+
+        this.helpers({
+            remoteDiagram: ()=> {
+                return Diagrams.findOne({_id: this.getReactively('diagramId')});
+            },
+            remoteLibrary: ()=> {
+                return Libraries.findOne({_id: this.getReactively('libraryId')});
+            }
+        });
+
+        this.libraryWatch = $scope.$watch('spPlay.remoteLibrary', this.openNewDiagram.bind(this));
+
     }
 
     openNewDiagram(newVal, oldVal)
