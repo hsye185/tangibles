@@ -22,13 +22,7 @@ class SPHomeCtrl {
                 $('#logo').fadeOut(1000);
                 $('#title').fadeOut(1000);
                 $('#subTitle').fadeOut(1000,function(){
-                    $(function () {
-                        $('#topPanel').animate({height: '62.5%'},1000);
-                        $('#midPanel').animate({top: '62.5%', height: '7.8125%'},1000);
-                        $('#botPanel').animate({top: '70.3125%',height: '29.6875%'},1000, function(){
-                            window.location="#/settings";
-                        });
-                    });
+                    window.location="#/settings";
                 });
             });
         }
@@ -46,7 +40,7 @@ class SPHomeCtrl {
                         $('#topPanel').animate({height: '62.5%'},1000);
                         $('#midPanel').animate({top: '62.5%', height: '7.8125%'},1000);
                         $('#botPanel').animate({top: '70.3125%',height: '29.6875%'},1000, function(){
-                            // window.location="#/settings";
+                            window.location="#/play";
                         });
                     });
                 });
