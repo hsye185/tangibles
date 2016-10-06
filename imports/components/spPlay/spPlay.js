@@ -7,7 +7,7 @@ import {Libraries} from '../../api/collections/libraries.js';
 import 'pubsub-js/src/pubsub';
 
 class SPPlayCtrl {
-    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const) {
+    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const, $gameStateService) {
         'ngInject';
         $reactive(this).attach($scope);
         this.$scope = $scope;
@@ -47,8 +47,9 @@ class SPPlayCtrl {
 
         //list passed in from level screen, or grade words passed in then random assigned 3 etc
         //------ PASSED IN FROM LEVEL SCREEEN
-        $scope.wordList = ["super", "shirt"];
-        $scope.maxUndos = 3;
+        $scope.levelInfo = $gameStateService.generateLevelInfo();
+        $scope.wordList = $scope.levelInfo.words;
+        $scope.maxUndos = $scope.levelInfo.maxUndos;
         //-------
 
         $scope.currentUndos = $scope.maxUndos;
