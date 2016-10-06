@@ -20,6 +20,7 @@ class SPPlayCtrl {
         this.diagramId = Random.id();
         this.libraryId = this.$const.DEFAULT_LIBRARY_ID;
         this.isNewDiagram = "true";
+        $scope.startCounter = 0;
         $scope.CORRECT = 1;
         $scope.INCORRECT = 2;
         $scope.UNATTEMPTED = 3; 
@@ -62,6 +63,11 @@ class SPPlayCtrl {
        
 
         $scope.undoButton = function(){
+            if($scope.startCounter < 3){
+                return;
+            }else{
+                $scope.startCounter++;
+            }
             if($scope.gameOver){
                 alert("Game Over! Please return to level select");
                 return;
@@ -77,6 +83,11 @@ class SPPlayCtrl {
             
         };
         $scope.speakButton = function(){
+            if($scope.startCounter < 3){
+                return;
+            }else{
+                $scope.startCounter++;
+            }
             Speech.init();
 
             Speech.speak({
@@ -86,6 +97,11 @@ class SPPlayCtrl {
             })
         };
         $scope.addLetter = function(newLetter){
+            if($scope.startCounter < 3){
+                return;
+            }else{
+                $scope.startCounter++;
+            }
             if($scope.gameOver){
                 alert("Game Over! Please return to level select");
                 return;
