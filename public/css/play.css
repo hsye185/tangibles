@@ -42,6 +42,16 @@
   background-image: url("../images/undo_button.svg");
   background-repeat: no-repeat; 
   background-size: 100%;
+
+  cursor: pointer;
+  -webkit-transition: bottom .25s;
+  transition: bottom .25s;
+}
+.undoButton:hover{
+  bottom: 66px;
+}
+.undoButton:active{
+  bottom: 64px;
 }
 
 .undoLabel{
@@ -82,6 +92,16 @@
   background-image: url("../images/speak_button.svg");
   background-repeat: no-repeat; 
   background-size: 100%;
+  cursor: pointer;
+
+  -webkit-transition: bottom .25s;
+  transition: bottom .25s;
+}
+.speakButton:hover{
+  bottom: 66px;
+}
+.speakButton:active{
+  bottom: 64px;
 }
 
 .speakLabel{
@@ -119,6 +139,15 @@
   position: absolute;
   top: 40px;
   left: 40px;
+
+  -webkit-transition: font-size .25s;
+  transition: font-size .25s;
+}
+.quitButton:hover{
+  font-size: 28px;
+}
+.quitButton:active{
+  font-size:27px;
 }
 
 .progressUnit{
