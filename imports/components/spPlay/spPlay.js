@@ -63,11 +63,6 @@ class SPPlayCtrl {
        
 
         $scope.undoButton = function(){
-            if($scope.startCounter < 3){
-                return;
-            }else{
-                $scope.startCounter++;
-            }
             if($scope.gameOver){
                 alert("Game Over! Please return to level select");
                 return;
@@ -83,11 +78,6 @@ class SPPlayCtrl {
             
         };
         $scope.speakButton = function(){
-            if($scope.startCounter < 3){
-                return;
-            }else{
-                $scope.startCounter++;
-            }
             Speech.init();
 
             Speech.speak({
@@ -97,11 +87,6 @@ class SPPlayCtrl {
             })
         };
         $scope.addLetter = function(newLetter){
-            if($scope.startCounter < 3){
-                return;
-            }else{
-                $scope.startCounter++;
-            }
             if($scope.gameOver){
                 alert("Game Over! Please return to level select");
                 return;
@@ -153,15 +138,6 @@ class SPPlayCtrl {
                 $scope.currentWordProgressIndex++;
             }
         }
-
-        $scope.$watch(
-            function() { $scope.tangibleController.selectedLetter },
-
-            function(newValue, oldValue) {
-                $scope.addLetter(newValue);
-            }
-        );
-
     }
 
     openNewDiagram(newVal, oldVal)
