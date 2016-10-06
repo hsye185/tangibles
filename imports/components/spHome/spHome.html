@@ -1,4 +1,6 @@
 <div id="spHomeContainer" class="spHomeContainer">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!-- <div class="leftPanel">
 		<div class="buttons">
 			<button ui-sref="setup">Start</button>
@@ -28,7 +30,7 @@
 		<h2 tabindex="-1" id="quitButton" class="white">Quit</h2>
 	</div>
 
-	<img src="images/logo_round.svg" id="logo" alt="some_text" class="logo">
+	<img src="images/logo_round.svg" id="logo" alt="some_text" class="fase logo"  ng-init="ngLoaded = true" ng-class="{ in: ngLoaded }">
 	<a id="title">STAMP-A-LETTER</a>
 	<a id="subTitle">Tangible Spelling Tutor</a>
 	

@@ -1,5 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
+import ngAnimate from 'angular-animate';
 import ngMaterial from 'angular-material';
 import angularUiRouter from 'angular-ui-router';
 import spellingApp from '../imports/components/spHome/spHome';
@@ -24,7 +25,7 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY',
 });
 
-angular.module('tangibles', [angularMeteor, ngMaterial, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, setup.name, settings.name, play.name, levelSelect.name])
+angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 'accounts.ui', home.name, diagram.name, libraries.name, spellingApp.name, setup.name, settings.name, play.name, levelSelect.name])
     .constant("$const", {
         "APP": "Tangibles",
         "NEW": "New diagram",

@@ -1,9 +1,11 @@
-<div id="spPlayContainer" class="spPlayContainer">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div id="spPlayContainer" class="fade spPlayContainer"  ng-init="ngLoaded = true" ng-class="{ in: ngLoaded }">
 	<link rel="stylesheet" type="text/css" href="css/play.css">
 	<link rel="stylesheet" type="text/css" href="css/font.css">
 
 	<div class="borderDivGold"></div>
-	<div class="mainPanelWhite">
+	<div id="mainPanelWhite" class="mainPanelWhite">
 		<div class="top">
 			<button tabindex="-1" class="quitButton inlineButton darkBlue">Quit</button>
 			<button class="inlineButton" ng-click="addLetter('s')">S</button>

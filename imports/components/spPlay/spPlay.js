@@ -26,6 +26,14 @@ class SPPlayCtrl {
         $scope.UNATTEMPTED = 3; 
         $scope.gameOver = false;
 
+        var millisecondsToWait = 1000;
+        setTimeout(function() {
+            // alert();
+            $('#mainPanelWhite').fadeIn(1000, function(){
+
+            });
+        }, millisecondsToWait, $scope);
+
         // this.wordList = ["cab", "hat", "car", "shirt", "glass"];
 
         $scope.getEmptySequence = function(length){
