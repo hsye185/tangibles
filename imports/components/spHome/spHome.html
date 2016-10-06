@@ -15,23 +15,24 @@
 	<div id="topPanel" class="topPanel">
 		
 	</div>
-
-	
-	<button tabindex="-1" id="playButton" class="darkBlue" ng-click="gotoLevelSelection()">PLAY</button>
-	
-	<button tabindex="-1" id="settingsButton" class="darkBlue" ng-click="gotoSettings()">Settings</button>
-	<button tabindex="-1" id="creditsButton" class="darkBlue" ng-click="gotoCredits()">Credits</button>
-	
-
 	<div id="midPanel" class="midPanel">
 		
 	</div>
 	<div id="botPanel" class="botPanel">
-		<h2 tabindex="-1" id="quitButton" class="white">Quit</h2>
+		
 	</div>
 
-	<img src="images/logo_round.svg" id="logo" alt="some_text" class="fase logo"  ng-init="ngLoaded = true" ng-class="{ in: ngLoaded }">
-	<a id="title">STAMP-A-LETTER</a>
-	<a id="subTitle">Tangible Spelling Tutor</a>
+	<div id="content">
+		<button tabindex="-1" id="playButton" class="darkBlue" ng-click="gotoLevelSelection()">PLAY</button>
+	
+		<button tabindex="-1" id="settingsButton" class="darkBlue" ng-click="gotoSettings()">Settings</button>
+		<button tabindex="-1" id="creditsButton" class="darkBlue" ng-click="gotoCredits()">Credits</button>
+
+		<h2 tabindex="-1" id="quitButton" class="white">Quit</h2>
+
+		<img src="images/logo_round.svg" id="logo" alt="some_text" class="fase logo"  ng-init="ngLoaded = true" ng-class="{ in: ngLoaded }">
+		<a id="title">STAMP-A-LETTER</a>
+		<a id="subTitle">Tangible Spelling Tutor</a>
+	</div>
 	
 </div>

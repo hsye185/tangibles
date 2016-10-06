@@ -11,6 +11,18 @@ class SPHomeCtrl {
         $reactive(this).attach($scope);
         this.$scope = $scope;
         this.$state = $state;
+
+        var millisecondsToWait = 10;
+        setTimeout(function() {
+            $('#botPanel').animate({height: '42.708333333333%'},1500,function(){
+                $('#midPanel').animate({height: '20.442708333333%'},1000,function(){
+                    $('#content').fadeIn(1000);
+                });
+                $('#topPanel').animate({height: '36.848958333333%'},1000);
+            });
+            
+        }, millisecondsToWait, $scope);
+
         $scope.gotoSettings = function(){
             $(function () {
                 $('#settingsButton').fadeOut(1000);
