@@ -7,7 +7,7 @@ import {Libraries} from '../../api/collections/libraries.js';
 import {Modules} from '../../api/collections/modules.js';
 
 class SPSetupCtrl {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, $gameStateService) {
         'ngInject';
         $reactive(this).attach($scope);
 
@@ -30,17 +30,24 @@ class SPSetupCtrl {
             // $scope.modules = cursor.toArray();
         }, millisecondsToWait, $scope);
 
+        $scope.$gameStateService = $gameStateService;
+
         $scope.playerName = '';
-        $scope.selectedModule = $scope.modules[0];
+        $scope.module = '';
 
-        $scope.$watch(function($scope) { return $scope.playerName },
-            function() {
+        $scope.submit = function() {
+            $scope.$gameStateService.playerName = $scope.playerName;
+            $scope.$gameStateService.moduleName = $scope.module.name;
 
-            });
-        $scope.$watch(function($scope) { return $scope.selectedModule },
-            function() {
+            for (var i = 0; i < $scope.modules.length; i++) {
+                    if ($scope.modules[i].name == $scope.module.name) {
+                        $scope.$gameStateService.moduleId = $scope.modules[i]._id;
+                        break;
+                    }
+            }
 
-            });
+            window.location="#/level_select";
+        }
 
     }
 

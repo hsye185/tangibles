@@ -7,11 +7,11 @@
 
     <input type="button" value="Back" onClick="history.go(-1);return true;">
     <br>
-    Name: <input type="text" name="firstname" value="" ng-module="playerName">
+    Name: <input type="text" name="firstname" value="" ng-model="playerName">
     <br>
-    Module: <select ng-init="selectedModule || options[0].name" ng-model="selectedModule" ng-options="module.name for module in modules"></select>
+    Module: <select ng-init="modules[0].name" ng-model="module" ng-options="module.name for module in modules"></select>
     <br>
-    <input type="submit" value="Save" ui-sref="play">
+    <input type="submit" value="Save" ng-click="submit()">
     <br>
 
 </body>
