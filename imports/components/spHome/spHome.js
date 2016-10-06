@@ -50,7 +50,7 @@ class SPHomeCtrl {
                         $('#topPanel').animate({height: '62.5%'},1000);
                         $('#midPanel').animate({top: '62.5%', height: '7.8125%'},1000);
                         $('#botPanel').animate({top: '70.3125%',height: '29.6875%'},1000, function(){
-                            window.location="#/setup";
+                            $state.go("setup");
                         });
                     });
                 });

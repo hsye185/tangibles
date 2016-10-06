@@ -177,25 +177,55 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
     this.playerName = "John Smith";
     this.moduleName = "Grade 4";
     this.moduleId = "K21313JSASDAD2111";
-    this.currentLevelId = 1;
+    this.currentLevelId = 0;
     this.levels = [
     {
         number: 1,
         wordCount: 1,
         maxUndos: 3,
-        partialCompletionRatio: 0.5 
+        maxSpeaks: 3,
+        partialCompletionRatio: 0.5,
+        status: 1
     },
     {
         number: 2,
         wordCount: 2,
         maxUndos: 1,
-        partialCompletionRatio: 0.5
+        maxSpeaks: 3,
+        partialCompletionRatio: 0.5,
+        status: 0
     },
     {
         number: 3,
         wordCount: 2,
         maxUndos: 3,
-        partialCompletionRatio: 0
+        maxSpeaks: 3,
+        partialCompletionRatio: 0,
+        status: 0
+    },
+    {
+        number: 4,
+        wordCount: 2,
+        maxUndos: 3,
+        maxSpeaks: 3,
+        partialCompletionRatio: 0,
+        status: 0
+    },
+    {
+        number: 5,
+        wordCount: 2,
+        maxUndos: 3,
+        maxSpeaks: 3,
+        partialCompletionRatio: 0,
+        status: 0
+    },
+    {
+        number: 6,
+        wordCount: 2,
+        maxUndos: 3,
+        maxSpeaks: 3,
+        partialCompletionRatio: 0,
+        status: 0
     }
     ];
     this.generateLevelInfo = function(){
@@ -227,37 +257,39 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
             partialCompletionRatio: level.partialCompletionRatio
         };
         return levelInformation;
-        // let info = {
-        //     levels: this.levels,
-        //     currentLevelId: this.currentLevelId,
-        //     modules: Modules,
-        //     moduleName: this.moduleName,
-        //     isDone: false
-        // };
-        // setTimeout(function() {
-        //     let level = info.levels[info.currentLevelId];
-        //     let module = info.modules.findOne({name: info.moduleName});
-        //     let words = module.words;
-        //     let levelWords = []; 
-        //     while(levelWords.length != level.wordCount){
-        //         let index = Math.floor(Math.random() * words.length);
-        //         let wordForIndex = words[index];
-        //         if(levelWords.indexOf(wordForIndex) == -1){
-        //             levelWords.push(wordForIndex);
-        //         }
-        //     }
-        //     levelInformation = {
-        //         words: levelWords,
-        //         maxUndos: level.maxUndos,
-        //         partialCompletionRatio: level.partialCompletionRatio
-        //     };
-        //     info.isDone = true;
-        // }, millisecondsToWait, info);
-        
-        // return levelInformation;
     };
-
-}).service('$tgImages', Images);
+})
+.service('$tgImages', Images)
+.filter("getStatusForNumber", function(){
+   return function(n){
+        let statuses = ["Locked", "Incomplete", "Completed", "Failed"];
+        return statuses[n];
+    }
+})
+.filter("getWordForNumber", function(){
+   return function(N){
+    // Source : http://www.webdeveloper.com/forum/showthread.php?282013-Converting-numbers-to-words-in-document-write
+    var words = [
+        'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
+        'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+    ];
+       var str = '';
+      if (N >= words.length) {
+        if ((N >= 1000) && (N < 10000)) { n = parseInt(N/1000); str += words[n]+'-thousand '; N -= n * 1000; }
+        if ((N >= 100)  && (N < 1000) ) { n = parseInt(N/100); str += words[n]+'-hundred '; N -= n * 100; }
+        if ((N > 0)  && (N < 20)) { str += words[N]; }
+        if ((N > 19) && (N < 30)) { str += 'twenty';  if (N > 20) { str += '-'+words[N-20]; } }
+        if ((N > 29) && (N < 40)) { str += 'thirty';  if (N > 30) { str += '-'+words[N-30]; } }
+        if ((N > 39) && (N < 50)) { str += 'fourty';  if (N > 40) { str += '-'+words[N-40]; } }
+        if ((N > 49) && (N < 60)) { str += 'fifty';   if (N > 50) { str += '-'+words[N-50]; } }
+        if ((N > 59) && (N < 70)) { str += 'sixty';   if (N > 60) { str += '-'+words[N-60]; } }
+        if ((N > 69) && (N < 80)) { str += 'seventy'; if (N > 70) { str += '-'+words[N-70]; } }
+        if ((N > 79) && (N < 90)) { str += 'eighty';  if (N > 80) { str += '-'+words[N-80]; } }
+        if ((N > 89) && (N < 100)) { str += 'ninety'; if (N > 90) { str += '-'+words[N-90]; } }
+      } else { str = words[N].charAt(0).toUpperCase() + words[N].slice(1); }
+      return str.charAt(0).toUpperCase() + str.slice(1);
+       }
+});
 
 function onReady() {
     angular.bootstrap(document, ['tangibles'], {strictDi: true});

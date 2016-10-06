@@ -1,3 +1,37 @@
 <div id="spLevelSelect" class="spLevelSelect">
-	{{playerName}}
+	<div class="navBar">
+		<button class="previousPageButton" ng-click="previousPage()">Back</button>
+	</div>
+	<div class="topSection">
+		<div class="infoSection">
+			<div class="levelLabel">
+				<span class="levelWord">Level: {{ (currentLevelBeingViewed+1) | getWordForNumber }}</span>
+				<span class="levelStatus">{{levels[currentLevelBeingViewed].status | getStatusForNumber }}</span>
+			</div>
+			<div class="modifierLabel">Modifiers</div>
+			<div class="wordsLabel">Words: {{levels[currentLevelBeingViewed].wordCount}}</div>
+			<div class="undosLabel">Undos: {{levels[currentLevelBeingViewed].maxUndos}}</div>
+			<div class="speaksLabel">Speaks: {{levels[currentLevelBeingViewed].maxSpeaks}}</div>
+			<div class="speaksLabel">Partial Completion: {{levels[currentLevelBeingViewed].partialCompletionRatio}}</div>
+			<div class="wordsLabel">Included Words</div>
+			<div class="wordsList">WORD WORD WORD WORD{{levels[currentLevelBeingViewed].words}}</div>
+		</div>
+		<div class="previewSection"></div>
+	</div>
+	<div class="startSection">
+		<span class="startLabel" ng-click="startLevel()">Start</span>
+	</div>
+	<div class="levelSection" >
+		<button class="leftButton" ng-click="leftButton()">LEFT</button>
+		<div class="levelBox" ng-repeat="level in levelView">
+			<div class="levelSquare"  ng-class="{locked: level.status == 0, unattempted: level.status == 1, completed: level.status == 2, failed: level.status == 3}" ng-click="levelClicked(level)" ng-disabled="level.status == 0">
+				<span class="levelNumber">{{level.number}}</span>
+			</div>
+			<div class="levelBoxLabel">Level: {{level.number | getWordForNumber}}</div>
+			<div ng-class="{levelUnderline: currentLevelBeingViewed == level.number-1}"></div>
+		</div>
+		
+		<button class="rightButton" ng-click="rightButton()">RIGHT</button>
+	</div>
+	
 </div>
