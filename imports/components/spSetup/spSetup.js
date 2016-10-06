@@ -30,6 +30,11 @@ class SPSetupCtrl {
             // $scope.modules = cursor.toArray();
         }, millisecondsToWait, $scope);
 
+        var millisecondsToWait2 = 250;
+        setTimeout(function() {
+            $('#content').fadeIn(1000);
+        }, millisecondsToWait2, $scope);
+
         $scope.$gameStateService = $gameStateService;
 
         $scope.playerName = '';
@@ -47,6 +52,13 @@ class SPSetupCtrl {
             }
 
             window.location="#/level_select";
+        }
+
+        $scope.gotoHome = function(){
+            $('#content').fadeOut(1000,function(){
+                window.location='#/spelling_app';
+            })
+
         }
 
     }

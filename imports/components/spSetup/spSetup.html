@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="css/setup.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
   </head>
 <body>
 
+    <div class="topPanel"></div>
+    <div class="midPanel"></div>
+    <div class="botPanel"></div>
 
-    <input type="button" value="Back" onClick="history.go(-1);return true;">
+    <div id="content" class="content">
+        <img src="images/left_arrow.svg" alt="some_text" class="leftArrow">
+        <button tabindex="-1" id="backButton" class="darkBlue" ng-click="gotoHome()">Back</button>
+
+        <p class="setupTitle darkBlue">Setup</p>
+        <p class="nameLabel">Name</p> 
+        <p class="difficultyLabel">Difficuly</p>
+
+         <input tabindex="-1" type="text" name="firstname" class="nameInput darkBlue" value="" ng-model="playerName">
+        <select ng-init="modules[0].name" ng-model="module" ng-options="module.name for module in modules" class="difficultySelect"></select>
+        <input type="submit" value="" class="saveButton" ng-click="submit()">
+
+    </div>
+
+    <!-- <input type="button" value="Back" onClick="history.go(-1);return true;">
     <br>
-    Name: <input type="text" name="firstname" value="" ng-model="playerName">
-    <br>
-    Module: <select ng-init="modules[0].name" ng-model="module" ng-options="module.name for module in modules"></select>
-    <br>
-    <input type="submit" value="Save" ng-click="submit()">
-    <br>
+     -->
 
 </body>
