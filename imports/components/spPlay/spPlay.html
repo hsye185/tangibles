@@ -1,29 +1,43 @@
 <div id="spPlayContainer" class="spPlayContainer">
+	<link rel="stylesheet" type="text/css" href="css/play.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
 
-	<div class="top">
-		<button class="quitButton inlineButton">Quit</button>
-		<button class="inlineButton" ng-click="addLetter('s')">S</button>
-		<button class="inlineButton" ng-click="addLetter('u')">U</button>
-		<button class="inlineButton" ng-click="addLetter('p')">P</button>
-		<button class="inlineButton" ng-click="addLetter('e')">E</button>
-		<button class="inlineButton" ng-click="addLetter('r')">R</button>
-		<button class="inlineButton" ng-click="addLetter('h')">H</button>
-		<button class="inlineButton" ng-click="addLetter('i')">I</button>
-		<button class="inlineButton" ng-click="addLetter('r')">R</button>
-		<button class="inlineButton" ng-click="addLetter('t')">T</button>
-	</div>
-
-	<div class="middle">
-		<div class="progressUnit" ng-repeat="progressUnit in currentWordSequence">
-			<div class="progressLetter">{{progressUnit.letter}}</div>
-			<div class="progressUnderline" ng-class="{greenUnderline: progressUnit.status == CORRECT, redUnderline: progressUnit.status == INCORRECT, orangeUnderline: progressUnit.status == UNATTEMPTED}"></div>
+	<div class="borderDivGold"></div>
+	<div class="mainPanelWhite">
+		<div class="top">
+			<button tabindex="-1" class="quitButton inlineButton darkBlue">Quit</button>
+			<button class="inlineButton" ng-click="addLetter('s')">S</button>
+			<button class="inlineButton" ng-click="addLetter('u')">U</button>
+			<button class="inlineButton" ng-click="addLetter('p')">P</button>
+			<button class="inlineButton" ng-click="addLetter('e')">E</button>
+			<button class="inlineButton" ng-click="addLetter('r')">R</button>
+			<button class="inlineButton" ng-click="addLetter('h')">H</button>
+			<button class="inlineButton" ng-click="addLetter('i')">I</button>
+			<button class="inlineButton" ng-click="addLetter('r')">R</button>
+			<button class="inlineButton" ng-click="addLetter('t')">T</button>
 		</div>
-	</div>
 
-	<div class="bottom">
-		<button class="undoButton" ng-click="undoButton()">Undo</button>
-		<div class="tangibleContainer" id="tangibleContainer"></div>
-		<button class="speakButton" ng-click="speakButton()">Speak</button>
+		<div class="middle">
+			<div class="progressUnit" ng-repeat="progressUnit in currentWordSequence">
+				<div class="progressLetter">{{progressUnit.letter}}</div>
+				<div class="progressUnderline" ng-class="{greenUnderline: progressUnit.status == CORRECT, redUnderline: progressUnit.status == INCORRECT, orangeUnderline: progressUnit.status == UNATTEMPTED}"></div>
+			</div>
+		</div>
+
+		
+
+		<div tabindex="-1" class="undoButton" ng-click="undoButton()">
+		</div>
+		<P class="undoLabel">Undo</P>
+		<P class="undosLeftLabel">{{currentUndos}} Left</P>
+		<div tabindex="-1" class="tangibleContainer" id="tangibleContainer"></div>
+		<P class="tangibleContainerLabel">Stamp Here</P>
+		<div tabindex="-1" class="speakButton" ng-click="speakButton()"></div>
+		<P class="speakLabel">Say Word</P>
+		<P class="speaksLeftLabel">{{currentSpeaks}} Left</P>
+		<!-- <div class="bottom">
+			
+		</div> -->
 	</div>
 	
 </div>
