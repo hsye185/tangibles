@@ -4,14 +4,15 @@
     <link rel="stylesheet" type="text/css" href="css/setup.css">
     <link rel="stylesheet" type="text/css" href="css/font.css">
   </head>
-<body>
+<body ng-cloak>
 
-    <div class="topPanel"></div>
-    <div class="midPanel"></div>
-    <div class="botPanel"></div>
+    <div id="topPanel" class="topPanel"></div>
+    <div id="midPanel" class="midPanel"></div>
+    <div id="botPanel" class="botPanel"></div>
 
     <div id="content" class="content">
-        <img src="images/left_arrow.svg" alt="some_text" class="leftArrow">
+        <!-- <img src="images/left_arrow.svg" alt="some_text" class="leftArrow"> -->
+        <p class="leftArrowText darkBlue"> &lt </p>
         <button tabindex="-1" id="backButton" class="darkBlue" ng-click="gotoHome()">Back</button>
 
         <p class="setupTitle darkBlue">Setup</p>

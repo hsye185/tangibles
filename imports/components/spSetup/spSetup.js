@@ -51,12 +51,23 @@ class SPSetupCtrl {
                     }
             }
 
-            $state.go("levelSelect");
+            $(function () {
+                $('#content').fadeOut(1000,function(){
+                    $(function () {
+                        // alert();
+                        $('#topPanel').animate({height: '62.5%'},1000);
+                        $('#midPanel').animate({top: '62.5%', height: '7.8125%'},1000);
+                        $('#botPanel').animate({top: '70.3125%',height: '29.6875%'},1000, function(){
+                            $state.go("levelSelect");
+                        });
+                    });
+                });
+            });
         }
 
         $scope.gotoHome = function(){
             $('#content').fadeOut(1000,function(){
-                window.location='#/spelling_app';
+                $state.go("spelling_app")
             })
 
         }

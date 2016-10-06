@@ -1,9 +1,9 @@
-<div id="spPlayContainer" class="fade spPlayContainer"  ng-init="ngLoaded = true" ng-class="{ in: ngLoaded }">
+<div id="spPlayContainer" class="spPlayContainer"  ng-cloak>
 	<link rel="stylesheet" type="text/css" href="css/play.css">
 	<link rel="stylesheet" type="text/css" href="css/font.css">
 
 	<div class="borderDivGold"></div>
-	<div id="mainPanelWhite" class="mainPanelWhite">
+	<div id="mainPanelWhite" class="mainPanelWhite" style="display: none">
 		<div class="top">
 			<button tabindex="-1" class="quitButton inlineButton darkBlue">Quit</button>
 			<button class="inlineButton" ng-click="addLetter('A')">A</button>
