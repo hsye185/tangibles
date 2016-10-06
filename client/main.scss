@@ -5,6 +5,9 @@ $black: #2E3641;
 
 //TODO: separate into separate files
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
 
 .container{
   height: 100%;

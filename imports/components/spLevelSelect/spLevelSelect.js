@@ -81,7 +81,10 @@ class SPLevelSelectCtrl {
             $('#content').fadeOut(1000,function(){
                 $(function () {
                     // alert();
-                    $('#topPanel').animate({height: '0%'},1000);
+                    var newHeight = $('#content').height() - 30;
+                    var newWidth = $('#content').width() - 30;
+                    $('#topPanel').animate({height: newHeight, width: newWidth, top: '15px', left: '15px'},1000);
+                    // $('#topPanel').animate({height: 'calc(100% - 30px)', width: 'calc(100% - 30px)'},1000);
                     $('#midPanel').animate({top: '0%', height: '100%'},1000);
                     $('#botPanel').animate({top: '100%',height: '0%'},1000, function(){
                         $state.go("play");

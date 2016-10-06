@@ -216,9 +216,9 @@ font-family: "robotoLight";
   transition: top .25s;
 }
 .saveButton:hover{
-  top: 75.3%;
+  top: 76%;
 }
 .saveButton:active{
-  top: 75.6%;
+  top: 76.4%;
 }
 

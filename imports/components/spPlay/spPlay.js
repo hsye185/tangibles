@@ -29,7 +29,7 @@ class SPPlayCtrl {
         var millisecondsToWait = 1000;
         setTimeout(function() {
             // alert();
-            $('#mainPanelWhite').fadeIn(1000, function(){
+            $('#content').fadeIn(1000, function(){
 
             });
         }, millisecondsToWait, $scope);

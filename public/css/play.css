@@ -254,3 +254,9 @@
   background : radial-gradient(-15.98% 25.69%, circle farthest-corner, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 225, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
 }
+
+.content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
