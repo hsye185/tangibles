@@ -7,7 +7,7 @@ import {Libraries} from '../../api/collections/libraries.js';
 import {Modules} from '../../api/collections/modules.js';
 
 class SPSetupCtrl {
-    constructor($scope, $reactive, $gameStateService) {
+    constructor($scope, $reactive, $gameStateService, $state) {
         'ngInject';
         $reactive(this).attach($scope);
 
@@ -46,7 +46,7 @@ class SPSetupCtrl {
                     }
             }
 
-            window.location="#/level_select";
+            $state.go("levelSelect");
         }
 
     }
