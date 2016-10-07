@@ -311,6 +311,67 @@ export class TangibleController extends AbstractTangibleController{
         this.clear();
         this.diagram = diagram;
         this.library = library;
+        this.library.tangibles = { "NaEFePtk4RP3AWi8r": {
+        "name": "Tignpost",
+        "icon": false,
+        "scale": 0.4274809160305344,
+        "startAngle": 178,
+        "transparentHit": false,
+        "registrationPoints": [
+          {
+            "x": 99,
+            "y": 163
+          },
+          {
+            "x": 213,
+            "y": 87
+          },
+          {
+            "x": 71.5,
+            "y": 86.5
+          }
+        ]
+      }, "dpN9dJkPdBRJnu2op": {
+        "name": "Coar",
+        "icon": true,
+        "scale": 1.0,
+        "startAngle": 200,
+        "transparentHit": true,
+        "registrationPoints": [
+          {
+            "x": 172,
+            "y": 201
+          },
+          {
+            "x": 80,
+            "y": 215
+          },
+          {
+            "x": 163,
+            "y": 65
+          }
+        ]
+      }, "ka2zMb8v9dcEi3tEv": {
+        "name": "Aungry",
+        "icon": false,
+        "scale": 1.0,
+        "startAngle": 270,
+        "transparentHit": true,
+        "registrationPoints": [
+          {
+            "x": 213.3330078125,
+            "y": 298.3330078125
+          },
+          {
+            "x": 238,
+            "y": 233
+          },
+          {
+            "x": 348,
+            "y": 263
+          }
+        ]
+      }};
         this.$tgImages = $tgImages;
 
         //Setup recogniser

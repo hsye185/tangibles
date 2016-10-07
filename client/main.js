@@ -239,7 +239,7 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
         // let module = Modules.findOne({name: this.moduleName});
         let module = {
             name: "Grade 4",
-            words: ["horse", "house", "giraffe", "puma", "dinosaur"]
+            words: ["CAT"]
 
         };
         let words = module.words;

@@ -117,7 +117,7 @@ class SPPlayCtrl {
                         setTimeout(function() {
                              //check if no more words left in list
                             if($scope.currentWordIndex == $scope.wordList.length-1){
-                                alert("Congratulations, you've completed level: X");
+                                alert("Congratulations, you've completed level: 1");
                                 //ADD CODE TO LEVEL UP AND GO BACK TO LEVEL SCREEN
                             }else{
                                 alert("Good Job! Next Word");
