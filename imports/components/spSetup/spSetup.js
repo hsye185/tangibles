@@ -55,9 +55,13 @@ class SPSetupCtrl {
                 $('#content').fadeOut(1000,function(){
                     $(function () {
                         // alert();
-                        $('#topPanel').animate({height: '62.5%'},1000);
-                        $('#midPanel').animate({top: '62.5%', height: '7.8125%'},1000);
-                        $('#botPanel').animate({top: '70.3125%',height: '29.6875%'},1000, function(){
+
+                        topHeight = window.innerHeight - 140;
+                        midHeight = window.innerHeight - 40;
+                        $('#topPanelAlpha').animate({height: '100px'},1000);
+                        $('#topPanel').animate({top: '100px', height: topHeight},1000);
+                        $('#midPanel').animate({bottom: '0px', left: '0px', height: '40px', width: '25%'},1000);
+                        $('#botPanel').animate({bottom: '0px', left: '25%', width: '75%', height: '40px'},1000, function(){
                             $state.go("levelSelect");
                         });
                     });

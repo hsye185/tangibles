@@ -33,8 +33,7 @@
 .undoButton{
   position: absolute;
   bottom: 60px; 
-  left: calc(50% - 238px);
-  margin-left: -50px;
+  left: calc(50% - 120px);
 
   width: 100px;
   height: 100px;
@@ -57,8 +56,7 @@
 .undoLabel{
   position: absolute;
       bottom: 15px;
-    left: calc(50% - 238px);
-    margin-left: -14px;
+    left: calc(50% - 85px);
 
     font-family : "robotoLight";
   font-size : 12px;
@@ -71,7 +69,7 @@
 .undosLeftLabel{
   position: absolute;
   bottom: 153px;
-  left: calc(50% - 252px);
+  left: calc(50% - 85px);
 
   font-family : "robotoLight";
   font-size : 12px;
@@ -83,12 +81,10 @@
 .speakButton{
   position: absolute;
   bottom: 60px; 
-  left: calc(50% + 138px);
-  margin-left: -50px;
+  left: calc(50% + 20px);
 
   width: 100px;
   height: 100px;
-  margin-left: 60px;
   background-image: url("../images/speak_button.svg");
   background-repeat: no-repeat; 
   background-size: 100%;
@@ -107,8 +103,7 @@
 .speakLabel{
   position: absolute;
   bottom: 15px;
-    left: calc(50% + 138px);
-    margin-left: 84px;
+    left: calc(50% + 42px);
 
     font-family : "robotoLight";
   font-size : 12px;
@@ -120,7 +115,7 @@
 .speaksLeftLabel{
   position: absolute;
   bottom: 153px;
-  left: calc(50% + 232px);
+  left: calc(50% + 55px);
 
   font-family : "robotoLight";
   font-size : 12px;
@@ -194,18 +189,11 @@
 #tangibleContainer
 {
   position: absolute;
-  bottom: 60px; 
-  left: 0;
-  right: 0;
-  margin: auto;
+  top: 15px;
 
-  background-image: url("../images/darkBlue_square.svg");
-  width: 256px;
-  height: 256px;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  border: none;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: calc(100% - 225px);
 }
 
 .tangibleContainerLabel{
