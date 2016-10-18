@@ -77,6 +77,10 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
             modules: function($rootScope) {
                 'ngInject';
                 return $rootScope.subscribe('modules');
+            },
+            students: function($rootScope) {
+                'ngInject';
+                return $rootScope.subscribe('students');
             }
         };
 
@@ -174,9 +178,9 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
     };
     return service;
 }).service('$gameStateService', function () {
-    this.playerName = "John Smith";
-    this.moduleName = "Grade 4";
-    this.moduleId = "K21313JSASDAD2111";
+    this.currentStudent = {};
+    this.currentModuleName = "Grade 4";
+    this.currentModuleWords = [];
     this.currentLevelId = 0;
     this.levels = [
     {
@@ -184,69 +188,71 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
         wordCount: 1,
         maxUndos: 3,
         maxSpeaks: 3,
-        partialCompletionRatio: 0.5,
-        status: 1
+        partialCompletionRatio: 0.5
     },
     {
         number: 2,
         wordCount: 2,
         maxUndos: 1,
         maxSpeaks: 3,
-        partialCompletionRatio: 0.5,
-        status: 0
+        partialCompletionRatio: 0.5
     },
     {
         number: 3,
         wordCount: 2,
         maxUndos: 3,
         maxSpeaks: 3,
-        partialCompletionRatio: 0,
-        status: 0
+        partialCompletionRatio: 0
     },
     {
         number: 4,
         wordCount: 2,
         maxUndos: 3,
         maxSpeaks: 3,
-        partialCompletionRatio: 0,
-        status: 0
+        partialCompletionRatio: 0
     },
     {
         number: 5,
         wordCount: 2,
         maxUndos: 3,
         maxSpeaks: 3,
-        partialCompletionRatio: 0,
-        status: 0
+        partialCompletionRatio: 0
     },
     {
         number: 6,
         wordCount: 2,
         maxUndos: 3,
         maxSpeaks: 3,
-        partialCompletionRatio: 0,
-        status: 0
+        partialCompletionRatio: 0
+    },
+    {
+        number: 7,
+        wordCount: 2,
+        maxUndos: 3,
+        maxSpeaks: 3,
+        partialCompletionRatio: 0
+    },
+    {
+        number: 8,
+        wordCount: 2,
+        maxUndos: 3,
+        maxSpeaks: 3,
+        partialCompletionRatio: 0
+    },
+    {
+        number: 9,
+        wordCount: 2,
+        maxUndos: 3,
+        maxSpeaks: 3,
+        partialCompletionRatio: 0
     }
     ];
     this.generateLevelInfo = function(){
-        // var millisecondsToWait = 100;
-        // let levelInformation = {
-        //     words: ["Default"],
-        //     maxUndos: 3,
-        //     partialCompletionRatio: 0.5
-        // }; 
         let level = this.levels[this.currentLevelId];
-        // let module = Modules.findOne({name: this.moduleName});
-        let module = {
-            name: "Grade 4",
-            words: ["CAT"]
-
-        };
-        let words = module.words;
         let levelWords = []; 
         while(levelWords.length != level.wordCount){
-            let index = Math.floor(Math.random() * words.length);
-            let wordForIndex = words[index];
+            let index = Math.floor(Math.random() * this.currentModuleWords.length);
+            let wordForIndex = this.currentModuleWords[index];
             if(levelWords.indexOf(wordForIndex) == -1){
                 levelWords.push(wordForIndex);
             }
@@ -257,6 +263,10 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
             partialCompletionRatio: level.partialCompletionRatio
         };
         return levelInformation;
+    };
+    this.unlockNextLevel = function(){
+        (this.currentStudent.moduleProgress[this.currentModuleName])[this.currentLevelId+1] = 1;
+        Meteor.call("students.updateModuleProgress", this.currentStudent);
     };
 })
 .service('$tgImages', Images)

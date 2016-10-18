@@ -1,10 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import template from './spSetup.html';
-import {TangibleController} from '../../api/tangibles/controller';
-import {Diagrams} from '../../api/collections/diagrams.js';
-import {Libraries} from '../../api/collections/libraries.js';
 import {Modules} from '../../api/collections/modules.js';
+import {Students} from '../../api/collections/students.js';
 
 class SPSetupCtrl {
     constructor($scope, $reactive, $gameStateService, $state) {
@@ -12,23 +10,17 @@ class SPSetupCtrl {
         $reactive(this).attach($scope);
 
         $scope.modules = [];
-        this.subscribe('modules');
+        this.subscribe('students');
         this.helpers({
             modules() {
                 return Modules.find({});
             }
         });
-        var millisecondsToWait = 100;
+
         setTimeout(function() {
-            let moduleList = Modules.find({}).fetch();
-            let strings = [];
-            for(let i = 0; i<moduleList.length; i++){
-                $scope.modules.push(moduleList[i]);
-            }
-            // Meteor.call("modules.deleteEntireCollection", null);
+            $scope.modules = Modules.find({}).fetch();
             $scope.$apply();
-            // $scope.modules = cursor.toArray();
-        }, millisecondsToWait, $scope);
+        }, 100, $scope);
 
         var millisecondsToWait2 = 250;
         setTimeout(function() {
@@ -36,21 +28,38 @@ class SPSetupCtrl {
         }, millisecondsToWait2, $scope);
 
         $scope.$gameStateService = $gameStateService;
-
-        $scope.playerName = '';
+        $scope.playerName = ''; 
         $scope.module = '';
 
         $scope.submit = function() {
-            $scope.$gameStateService.playerName = $scope.playerName;
-            $scope.$gameStateService.moduleName = $scope.module.name;
-
-            for (var i = 0; i < $scope.modules.length; i++) {
-                    if ($scope.modules[i].name == $scope.module.name) {
-                        $scope.$gameStateService.moduleId = $scope.modules[i]._id;
+            setTimeout(function() {
+                $scope.modules = Modules.find({}).fetch();
+                let pName = $scope.playerName.toLowerCase();
+                let chosenModuleName = $scope.module.name;
+                let student = Students.findOne({_id: pName});
+                if(!student){
+                    student = {
+                        _id: pName,
+                        moduleProgress: {}
+                    };
+                    student.moduleProgress[chosenModuleName] = [1,0,0,0,0,0,0,0,0];
+                    Meteor.call("students.insert", student);
+                }else{
+                    if(!student.moduleProgress[chosenModuleName]){
+                        student.moduleProgress[chosenModuleName] = [1,0,0,0,0,0,0,0,0];
+                        Meteor.call("students.updateModuleProgress", student);
+                    }
+                }
+                let words = Modules.findOne({name: chosenModuleName});
+                for(m of $scope.modules){
+                    if(m.name == chosenModuleName){
+                        $scope.$gameStateService.currentModuleWords = m.words;
                         break;
                     }
-            }
-
+                }
+                $scope.$gameStateService.currentStudent = student;
+                $scope.$gameStateService.currentModuleName = chosenModuleName;
+            }, 100, $scope);
             $(function () {
                 $('#content').fadeOut(1000,function(){
                     $(function () {

@@ -6,9 +6,8 @@ class SPLevelSelectCtrl {
     constructor($scope, $reactive, $gameStateService, $state) {
         'ngInject'; 
         $reactive(this).attach($scope);
-       $scope.playerName = $gameStateService.playerName;
-       $scope.moduleName = $gameStateService.moduleName;
-       $scope.moduleId = $gameStateService.moduleId;
+       $scope.playerName = $gameStateService.currentStudent._id;
+       $scope.moduleName = $gameStateService.currentModuleName;
        $scope.currentLevelId = $gameStateService.currentLevelId;
        $scope.levels = $gameStateService.levels;
        $scope.currentLevelBeingViewed = 0;

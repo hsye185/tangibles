@@ -74,7 +74,7 @@
 			<div class="levelBoxContainer">
 				<div tabindex="-1" class="levelBox" ng-repeat="level in levelView">
 					<div tabindex="-1" class="levelSquare"  ng-class="{locked: level.status == 0, unattempted: level.status == 1, completed: level.status == 2, failed: level.status == 3}" ng-click="levelClicked(level)" ng-disabled="level.status == 0">
-						<span ng-class="levelNumberViewed: currentLevelBeingViewed == level.number-1, levelNumber: currentLevelBeingViewed != level.number-1">{{level.number}}</span>
+						<span ng-class="{levelNumberViewed: currentLevelBeingViewed == level.number-1, levelNumber: currentLevelBeingViewed != level.number-1}">{{level.number}}</span>
 					</div>
 					<div class="levelBoxLabel">Level: {{level.number | getWordForNumber}}</div>
 					<div ng-class="{levelUnderline: currentLevelBeingViewed == level.number-1}"></div>
