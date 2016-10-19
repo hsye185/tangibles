@@ -96,15 +96,18 @@ class SPPlayCtrl {
                 $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = newLetter;
                 if(newLetter == $scope.currentWordSplit[$scope.currentWordProgressIndex]){
                     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.CORRECT;
+                    var audio = new Audio('audio/Sonic.Ring.mp3');
+                    audio.play();
                 }else{
                     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.INCORRECT;
+                    var audio2 = new Audio('audio/wrong.mp3');
+                    audio2.play();
                     if($scope.currentUndos == 0){
                         $scope.gameOver = true;
                         var millisecondsToWait = 100;
                         setTimeout(function() {
                            alert("Game Over: You've run out of Undos and have an error in your word");
                         }, millisecondsToWait);
-                        
                     }
                 }
                 
