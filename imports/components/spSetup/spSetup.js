@@ -33,7 +33,6 @@ class SPSetupCtrl {
 
         $scope.submit = function() {
             setTimeout(function() {
-                $scope.modules = Modules.find({}).fetch();
                 let pName = $scope.playerName.toLowerCase();
                 let chosenModuleName = $scope.module.name;
                 let student = Students.findOne({_id: pName});

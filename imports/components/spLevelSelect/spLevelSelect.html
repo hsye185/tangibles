@@ -15,10 +15,10 @@
     </div>
     <div id="content" class="content" style="display:none">
     	<p class="wordCount">{{levels[currentLevelBeingViewed].wordCount}} WORDS</p>
-    	<div class="leftArrow"></div>
-    	<p tabindex="-1" class="previousButton" ng-click="leftButton()">Level {{ (currentLevelBeingViewed)}} </p>
-    	<p tabindex="-1" class="nextButton" ng-click="rightButton()">Level {{ (currentLevelBeingViewed+2)}} </p>
-    	<div id="rightArrowOrLock" class="rightArrow"></div>
+    	<div tabindex="-1" class="leftArrow" ng-click="leftButton()" ng-class="{displayNone: currentLevelBeingViewed <= 0}"></div>
+    	<p tabindex="-1" class="previousButton" ng-click="leftButton()" ng-class="{displayNone: currentLevelBeingViewed <= 0}">Level {{currentLevelBeingViewed}} </p>
+    	<p tabindex="-1" class="nextButton" ng-click="rightButton()" ng-class="{displayNone: currentLevelBeingViewed+2 >= 10}">Level {{ (currentLevelBeingViewed+2)}} </p>
+    	<div tabindex="-1" id="rightArrowOrLock" ng-click="rightButton()" ng-class="{displayNone: currentLevelBeingViewed+2 >= 10, lock: currentLevelStatus() == 0, rightArrow: currentLevelStatus() != 0}"></div>
 
     	<div class="undosIcon"></div>
     	<p class="undosText">{{levels[currentLevelBeingViewed].maxUndos}} Undos</p>

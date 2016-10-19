@@ -26,6 +26,12 @@ class SPPlayCtrl {
         $scope.UNATTEMPTED = 3; 
         $scope.gameOver = false;
 
+        $scope.currentStudent = $gameStateService.currentStudent;
+        $scope.currentLevelId = $gameStateService.currentLevelId;
+        $scope.currentModuleName = $gameStateService.currentModuleName;
+        $scope.currentModuleWords = $gameStateService.currentModuleWords;
+        $scope.levels = $gameStateService.levels;
+
         var millisecondsToWait = 500;
         setTimeout(function() {
             // alert();
@@ -46,7 +52,23 @@ class SPPlayCtrl {
 
         //list passed in from level screen, or grade words passed in then random assigned 3 etc
         //------ PASSED IN FROM LEVEL SCREEEN
-        $scope.levelInfo = $gameStateService.generateLevelInfo();
+
+        let level = $scope.levels[$scope.currentLevelId];
+        let levelWords = []; 
+        while(levelWords.length != level.wordCount){
+            let index = Math.floor(Math.random() * $scope.currentModuleWords.length);
+            let wordForIndex = $scope.currentModuleWords[index];
+            if(levelWords.indexOf(wordForIndex) == -1){
+                levelWords.push(wordForIndex);
+            }
+        }
+        $scope.levelInfo = {
+            words: levelWords,
+            maxUndos: level.maxUndos,
+            partialCompletionRatio: level.partialCompletionRatio
+        };
+
+        // $scope.levelInfo = $gameStateService.generateLevelInfo();
         $scope.wordList = $scope.levelInfo.words;
         $scope.maxUndos = $scope.levelInfo.maxUndos;
         //-------
@@ -71,6 +93,9 @@ class SPPlayCtrl {
                 $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
             }
             
+        };
+        $scope.quitButton = function(){
+            $state.go("levelSelect");
         };
         $scope.speakButton = function(){
             Speech.init({
