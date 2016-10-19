@@ -86,16 +86,16 @@ var alphabet_tangibles = { "a": {
         "transparentHit": false,
         "registrationPoints": [
           {
-            "x": 175.35,
-            "y": 320.31
+            "x": 384.25,
+            "y": 179.18
           },
           {
-            "x": 240.1,
-            "y": 163.19
+            "x": 442,
+            "y": 19
           },
           {
-            "x": 129.1,
-            "y": 289.94
+            "x": 444,
+            "y": 195
           }
         ]
       }, "f": {

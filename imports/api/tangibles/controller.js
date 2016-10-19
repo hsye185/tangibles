@@ -402,7 +402,7 @@ export class TangibleController extends AbstractTangibleController{
                 if (matches.length > 0) {
                     var correctLetter = this.spPlay.$scope.currentWordSplit[this.spPlay.$scope.currentWordProgressIndex];
 
-                    var bestMatch;
+                    var bestMatch = matches[0];
 
                     for (match of matches) {
                         if (match.similarity < 30 && match.target == correctLetter) {
