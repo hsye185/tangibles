@@ -4,6 +4,7 @@ import {Visual} from './visual';
 import {Recogniser} from './recogniser';
 import {Canvas2Image} from 'canvas2image';
 import html2canvas from 'html2canvas';
+import {alphabet_tangibles} from './alphabetTangibles';
 
 export class AbstractTangibleController {
 
@@ -142,8 +143,8 @@ export class TangibleController extends AbstractTangibleController{
         this.width = rect.right - rect.left;
         this.height = rect.bottom - rect.top;
 
-        this.width = 256;
-        this.height = 256;
+        //this.width = 1024;
+        //this.height = 256;
 
         this.stage = new Konva.Stage({
             container: this.containerID,
@@ -176,7 +177,6 @@ export class TangibleController extends AbstractTangibleController{
         this.stage.add(this.deselectLayer, this.tangibleLayer, this.touchPointsLayer); //Left param on bottom, right on top
         this.stage.getContent().addEventListener('touchstart', this.onTouch.bind(this));
 
-        this.selectedLetter = "";
     }
 
     onDeselected() {
@@ -343,6 +343,8 @@ export class TangibleController extends AbstractTangibleController{
             let template = this.library.tangibles[instance.type];
             this.addVisual(id, instance.type, instance, template, this.stage);
         }
+
+        this.library.tangibles = alphabet_tangibles;
     }
 
     addVisual(instanceId, typeId, model, template, stage) {
@@ -420,8 +422,6 @@ export class TangibleController extends AbstractTangibleController{
                     let instance = {type: closestMatch.target, position: position, orientation: orientation, zIndex: 0};
                     this.diagram.tangibles[id] = instance;
                     this.addVisual(id, instance.type, instance, template, this.stage);
-
-                    var str = JSON.stringify(this.library);
 
                     this.spPlay.$scope.addLetter(template.name[0]);
 
