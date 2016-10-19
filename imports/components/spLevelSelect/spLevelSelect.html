@@ -1,4 +1,4 @@
-<div id="spLevelSelect" class="spLevelSelect" ng-cloak>
+<div id="spLevelSelect" class="spLevelSelect">
 
 	<link rel="stylesheet" type="text/css" href="css/levelSelection.css">
     <link rel="stylesheet" type="text/css" href="css/font.css">
@@ -8,63 +8,27 @@
 
 	<div id="topPanel" class="topPanel"></div>
     <div id="midPanel" class="midPanel"></div>
-    <div id="botPanel" class="botPanel"></div>
-    <div id="content" class="content">
-    	<div id="topContent" class="topContent">
-			<button tabindex="-1" id="backButton" class="backButton" ng-click="backButton()">Back</button>
-			<p class="levelTitle darkBlue">Level: {{ (currentLevelBeingViewed+1) | getWordForNumber }}</p>
-			<p class="levelStatus">
-				{{levels[currentLevelBeingViewed].status | getStatusForNumber }}
-			</p>
-			<p class="modifiersTitle darkBlue">
-				Modifiers
-			</p>
-			<div class="modifiersList">
-				<div class="row">
-					<p class="modifiersWords col-sm-12">Words: {{levels[currentLevelBeingViewed].wordCount}}</p>
-				</div>
-				<div class="row">
-					<p class="modifiersWords col-sm-12">Undos: {{levels[currentLevelBeingViewed].maxUndos}}</p>
-				</div>
-				<div class="row">
-					<p class="modifiersWords col-sm-12">Speaks: {{levels[currentLevelBeingViewed].maxSpeaks}}</p>
-				</div>
-				<div class="row">
-					<p class="modifiersWords col-sm-12">Partial Completion: {{levels[currentLevelBeingViewed].partialCompletionRatio}}</p>
-				</div>
-			</div>
-			
-			<p class="wordsTitle darkBlue">Included Words</p>
+    <div id="botPanelLeft" class="botPanelLeft"></div>
+    <div id="botPanelRight" class="botPanelRight"></div>
+    <div id="titleBlock" class="titleBlock" style="display:none">
+    	<p class="title whiteAmber">Level: {{ currentLevelBeingViewed+1 | getWordForNumber }}</p>
+    </div>
+    <div id="content" class="content" style="display:none">
+    	<p class="wordCount">{{levels[currentLevelBeingViewed].wordCount}} WORDS</p>
+    	<div class="leftArrow"></div>
+    	<p tabindex="-1" class="previousButton" ng-click="leftButton()">Level {{ (currentLevelBeingViewed)}} </p>
+    	<p tabindex="-1" class="nextButton" ng-click="rightButton()">Level {{ (currentLevelBeingViewed+2)}} </p>
+    	<div id="rightArrowOrLock" class="rightArrow"></div>
 
-			<div class="wordsList container-fluid">
-				<div class="row">
-					<p class="word col-sm-3" style="padding-left:0">Super</p>
-					<p class="word col-sm-3" style="padding-left:0">Martian</p>
-					<p class="word col-sm-3" style="padding-left:0">Power</p>
-					<p class="word col-sm-3" style="padding-left:0">Start</p>
-					<p class="word col-sm-3" style="padding-left:0">Great</p>
-					<p class="word col-sm-3" style="padding-left:0">Earth</p>
-					<p class="word col-sm-3" style="padding-left:0">Moon</p>
-					<p class="word col-sm-3" style="padding-left:0">Finish</p>
-					<p class="word col-sm-3" style="padding-left:0">Diction</p>
-					<p class="word col-sm-3" style="padding-left:0">Venus</p>
-					<p class="word col-sm-3" style="padding-left:0">Great</p>
-					<p class="word col-sm-3" style="padding-left:0">Same</p>
-					<p class="word col-sm-3" style="padding-left:0">Beat</p>
-					<p class="word col-sm-3" style="padding-left:0">Trap</p>
-					<p class="word col-sm-3" style="padding-left:0">Poor</p>
-					<p class="word col-sm-3" style="padding-left:0">Sound</p>
-					<p class="word col-sm-3" style="padding-left:0">Genius</p>
-					<p class="word col-sm-3" style="padding-left:0">Dragon</p>
-					<p class="word col-sm-3" style="padding-left:0">Wreck</p>
-					<p class="word col-sm-3" style="padding-left:0">Ground</p>
-				</div>
-			</div>
+    	<div class="undosIcon"></div>
+    	<p class="undosText">{{levels[currentLevelBeingViewed].maxUndos}} Undos</p>
+    	<div class="speaksIcon"></div>
+    	<p class="speaksText">{{levels[currentLevelBeingViewed].maxSpeaks}} Speaks</p>
+    	<div class="emptyCircleIcon"></div>
+    	<div class="filledInIconFifty"></div>
+    	<p class="filledInText"> {{levels[currentLevelBeingViewed].partialCompletionRatio}}% filled-In</p>
 
-			<img class="previewBorder" src="images/preview_border.svg" alt="preview_border">
-			<img class="previewContents" src="images/preview_0.svg" alt="preview_border">
-			<p class="previewTitle darkBlue">Preview</p>
-		</div>
+    	<div tabindex="-1" id="startButton" class="startButton" ng-click="startLevel()"></div>
 
 		<div class="startButtonContainer">
 			<img tabindex="-1" class="startButton" src="images/start_button.svg" alt="start_button" ng-click="startLevel()">

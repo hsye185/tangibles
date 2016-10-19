@@ -9,6 +9,27 @@
   z-index: 5;
 }
 
+.topPanelAlpha{
+  position: absolute;
+  top: 0; 
+  left: 0px; 
+  z-index: 1;
+
+  width: 100%;
+  /*height: 36.848958333333%; */
+  height: 0px;
+
+  background : -moz-radial-gradient(-4.98% 2%, circle farthest-corner, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  background : -webkit-radial-gradient(-4.98% 2%, circle farthest-corner, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  background : -webkit-gradient(radial,-4.98% 2% ,0 , -4.98% 2%, 1152.01 ,color-stop(0,rgba(51, 57, 87, 1) ),color-stop(1,rgba(0, 7, 45, 1) ));
+  background : -o-radial-gradient(-4.98% 2%, circle farthest-corner, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  background : -ms-radial-gradient(-4.98% 2%, circle farthest-corner, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Stlye=2);"
+  background : radial-gradient(-4.98% 2%, circle farthest-corner, rgba(51, 57, 87, 1) 0%, rgba(0, 7, 45, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
+
+  }
+
 .topPanel{
     position: absolute;
     top: 0; 

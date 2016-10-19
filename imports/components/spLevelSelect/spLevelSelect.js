@@ -13,26 +13,40 @@ class SPLevelSelectCtrl {
        $scope.currentLevelBeingViewed = 0;
        $scope.currentScrollView = 1;
 
-       var millisecondsToWait3 = 50;
-        setTimeout(function() {
-            var heightTop = $('#topPanel').height();
-            var heightTopInner = 480;
-            var scale = heightTop / heightTopInner;
+       // var millisecondsToWait3 = 50;
+       //  setTimeout(function() {
+       //      var heightTop = $('#topPanel').height();
+       //      var heightTopInner = 480;
+       //      var scale = heightTop / heightTopInner;
 
-            $('#topContent').css(
+       //      $('#topContent').css(
+       //          {'-ms-transform': 'scale('+scale+')', 
+       //          '-webkit-transform': 'scale('+scale+')', 
+       //          'transform': 'scale('+scale+')'
+       //      });
+
+       //      var heightBottom = $('#botPanel').height();
+       //      var heightBotInner = 228; 
+       //      var scale2 = heightBottom / heightBotInner; 
+
+       //      $('#levelSection').css(
+       //          {'-ms-transform': 'scale('+scale2+')', 
+       //          '-webkit-transform': 'scale('+scale2+')', 
+       //          'transform': 'scale('+scale2+')'
+       //      });
+
+       //  }, millisecondsToWait3, $scope);
+
+        var millisecondsToWait3 = 50;
+        setTimeout(function() {
+            var heightMid = $('#midPanel').height();
+            var heightMidInner = 628;
+            var scale = heightMid / heightMidInner;
+
+            $('#content').css(
                 {'-ms-transform': 'scale('+scale+')', 
                 '-webkit-transform': 'scale('+scale+')', 
                 'transform': 'scale('+scale+')'
-            });
-
-            var heightBottom = $('#botPanel').height();
-            var heightBotInner = 228; 
-            var scale2 = heightBottom / heightBotInner; 
-
-            $('#levelSection').css(
-                {'-ms-transform': 'scale('+scale2+')', 
-                '-webkit-transform': 'scale('+scale2+')', 
-                'transform': 'scale('+scale2+')'
             });
 
         }, millisecondsToWait3, $scope);
@@ -40,6 +54,7 @@ class SPLevelSelectCtrl {
        var millisecondsToWait2 = 100;
         setTimeout(function() {
             $('#content').fadeIn(1000);
+            $('#titleBlock').fadeIn(1000);
         }, millisecondsToWait2, $scope);
 
        $scope.updateLevelView = function(){
@@ -77,16 +92,20 @@ class SPLevelSelectCtrl {
 
         $scope.startLevel = function(){
             $scope.currentLevelId = $scope.currentLevelBeingViewed;
+            $('#titleBlock').fadeOut(1000,function(){
+            });
             $('#content').fadeOut(1000,function(){
                 $(function () {
                     // alert();
-                    var newHeight = $('#content').height() - 30;
-                    var newWidth = $('#content').width() - 30;
-                    $('#topPanel').animate({height: newHeight, width: newWidth, top: '15px', left: '15px'},1000);
+                    var newHeight = window.innerHeight - 30;
+                    var newWidth = window.innerWidth - 30;
+                    // $('#topPanel').animate({height: newHeight, width: newWidth, top: '15px', left: '15px'},1000);
                     // $('#topPanel').animate({height: 'calc(100% - 30px)', width: 'calc(100% - 30px)'},1000);
-                    $('#midPanel').animate({top: '0%', height: '100%'},1000);
-                    $('#botPanel').animate({top: '100%',height: '0%'},1000, function(){
-                        $state.go("play");
+                    $('#midPanel').animate({top: '15px', left: '15px', height: newHeight, width: newWidth},1000);
+                    $('#botPanelLeft').animate({top: '0%',height: '100%',width:'100%'},1000, function(){
+                        setTimeout(function() {
+                            $state.go("play");
+                        }, 250, $scope);     
                     });
                 });
             });
