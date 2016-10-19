@@ -130,24 +130,37 @@ class SPPlayCtrl {
             if($scope.currentUndos == 0){
                 alert("You've ran out of Undos");
             }else{
-                if($scope.currentWordProgressIndex > 0){
+                // if($scope.currentWordProgressIndex > 0){
                     
-                    $scope.currentUndos--;
+                //     $scope.currentUndos--;
                     
 
-                    let jump = 1;
-                    while($scope.currentWordSequence[$scope.currentWordProgressIndex-jump].status != $scope.PREFILLED){
-                        jump--;
-                        if($scope.currentWordProgressIndex-jump < 0){
+                //     let jump = 1;
+                //     while($scope.currentWordSequence[$scope.currentWordProgressIndex-jump].status != $scope.PREFILLED){
+                //         jump--;
+                //         if($scope.currentWordProgressIndex-jump < 0){
+                //             break;
+                //         }
+                //     }
+                //     $scope.currentWordProgressIndex-=jump;
+                //     $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
+                //     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+                // }
+
+                // $scope.currentWordProgressIndex+=jump;
+                $scope.currentUndos--;
+
+                var i = $scope.currentWordSplit.length - 1;
+
+                while (i > -1) {
+                    if ($scope.currentWordSequence[i].status == $scope.INCORRECT) {
+                            $scope.currentWordSequence[i].letter = " ";
+                            $scope.currentWordSequence[i].status = $scope.UNATTEMPTED;
+                            $scope.currentWordProgressIndex = i;
                             break;
-                        }
                     }
-                    $scope.currentWordProgressIndex-=jump;
-                    $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
-                    $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+                    i--;
                 }
-
-                $scope.currentWordProgressIndex+=jump;
             }
             
         };

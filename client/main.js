@@ -193,57 +193,57 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
     {
         number: 2,
         wordCount: 2,
-        maxUndos: 1,
-        maxSpeaks: 3,
-        partialCompletionRatio: 0.5
+        maxUndos: 4,
+        maxSpeaks: 5,
+        partialCompletionRatio: 0.3
     },
     {
         number: 3,
         wordCount: 2,
-        maxUndos: 3,
-        maxSpeaks: 3,
+        maxUndos: 5,
+        maxSpeaks: 6,
         partialCompletionRatio: 0
     },
     {
         number: 4,
-        wordCount: 2,
-        maxUndos: 3,
-        maxSpeaks: 3,
-        partialCompletionRatio: 0
+        wordCount: 4,
+        maxUndos: 1,
+        maxSpeaks: 10,
+        partialCompletionRatio: 0.2
     },
     {
         number: 5,
-        wordCount: 2,
-        maxUndos: 3,
-        maxSpeaks: 3,
-        partialCompletionRatio: 0
+        wordCount: 3,
+        maxUndos: 0,
+        maxSpeaks: 1,
+        partialCompletionRatio: 0.5
     },
     {
         number: 6,
-        wordCount: 2,
+        wordCount: 5,
         maxUndos: 3,
-        maxSpeaks: 3,
+        maxSpeaks: 6,
         partialCompletionRatio: 0
     },
     {
         number: 7,
-        wordCount: 2,
-        maxUndos: 3,
-        maxSpeaks: 3,
+        wordCount: 6,
+        maxUndos: 2,
+        maxSpeaks: 6,
         partialCompletionRatio: 0
     },
     {
         number: 8,
-        wordCount: 2,
-        maxUndos: 3,
-        maxSpeaks: 3,
+        wordCount: 8,
+        maxUndos: 5,
+        maxSpeaks: 12,
         partialCompletionRatio: 0
     },
     {
         number: 9,
-        wordCount: 2,
-        maxUndos: 3,
-        maxSpeaks: 3,
+        wordCount: 10,
+        maxUndos: 2,
+        maxSpeaks: 10,
         partialCompletionRatio: 0
     }
     ];
