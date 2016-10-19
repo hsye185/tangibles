@@ -22,16 +22,28 @@
 	{
 		"_id" : "3",
 		"name" : "Grade 3",
-		"words" : []
+		"words" : ["am", "door", "last", "once", "through",
+					"another", "everyone", "left", "play", "told",
+"away", "family", "long", "really", "too",
+"bed", "five", "looked", "room", "walked",
+"been", "found", "made", "something", "want",
+"before", "friend", "man", "still", "way",
+"best", "fun", "more", "thing",
+"brother", "heard", "morning", "think", "which",
+"called", "here", "name", "thought", "who",
+"car", "know", "never", "three", "year"]
 	},
 	{
 		"_id" : "4",
 		"name" : "Grade 4",
-		"words" : []
-	},
-	{
-		"_id" : "5",
-		"name" : "Grade 5",
-		"words" : []
+		"words" : ["allowed", "disappeared", "holidays", "stopped", "awhile",
+"doesn’t", "hopped", "straight", "believe", "dollars",
+"hospital", "breakfast", "tomorrow", "instead",
+"threw", "brought", "everybody", "lightning",
+"cannon", "everyday", "luckily", "video", 
+"everywhere", "nearly", "caught", "excited",
+"police", "watch", "centre", "favourite", "present",
+"chocolate", "field", "probably", "clothes", "friends", "quiet",
+"front", "scared", "grabbed", "second", "someone", "different", "having"]
 	}
 ]
