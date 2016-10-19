@@ -29,30 +29,5 @@
     	<p class="filledInText"> {{levels[currentLevelBeingViewed].partialCompletionRatio}}% filled-In</p>
 
     	<div tabindex="-1" id="startButton" class="startButton" ng-click="startLevel()"></div>
-
-		<div class="startButtonContainer">
-			<img tabindex="-1" class="startButton" src="images/start_button.svg" alt="start_button" ng-click="startLevel()">
-		</div>
-		<div id="levelSection" class="levelSection" >
-			<img tabindex="-1" class="leftButton" src="images/left_button.svg" alt="left_button" ng-click="leftButton()">
-			<div class="levelBoxContainer">
-				<div tabindex="-1" class="levelBox" ng-repeat="level in levelView">
-					<div tabindex="-1" class="levelSquare"  ng-class="{locked: level.status == 0, unattempted: level.status == 1, completed: level.status == 2, failed: level.status == 3}" ng-click="levelClicked(level)" ng-disabled="level.status == 0">
-						<span ng-class="{levelNumberViewed: currentLevelBeingViewed == level.number-1, levelNumber: currentLevelBeingViewed != level.number-1}">{{level.number}}</span>
-					</div>
-					<div class="levelBoxLabel">Level: {{level.number | getWordForNumber}}</div>
-					<div ng-class="{levelUnderline: currentLevelBeingViewed == level.number-1}"></div>
-				</div>
-			</div>
-			<img tabindex="-1" class="rightButton" src="images/right_button.svg" alt="right_button" ng-click="rightButton()">
-		</div>
     </div>
-
-    
-
-	
-
-    <!-- <p class="wordsList darkBlue">WORD WORD WORD WORD {{levels[currentLevelBeingViewed].words}}</p> -->
-	
-	
 </div>
