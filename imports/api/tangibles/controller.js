@@ -143,8 +143,8 @@ export class TangibleController extends AbstractTangibleController{
         this.width = rect.right - rect.left;
         this.height = rect.bottom - rect.top;
 
-        //this.width = 1024;
-        //this.height = 256;
+        this.width = 964;
+        this.height = 362;
 
         this.stage = new Konva.Stage({
             container: this.containerID,
@@ -313,6 +313,8 @@ export class TangibleController extends AbstractTangibleController{
         this.library = library;
         this.$tgImages = $tgImages;
 
+        this.library.tangibles = alphabet_tangibles;
+
         //Setup recogniser
         let features = [];
         let targets = [];
@@ -343,8 +345,7 @@ export class TangibleController extends AbstractTangibleController{
             let template = this.library.tangibles[instance.type];
             this.addVisual(id, instance.type, instance, template, this.stage);
         }
-
-        this.library.tangibles = alphabet_tangibles;
+        
     }
 
     addVisual(instanceId, typeId, model, template, stage) {
@@ -392,43 +393,27 @@ export class TangibleController extends AbstractTangibleController{
         if (this.enable) {
             let points = this.toPoints(event.touches);
             let scaledPoints = this.toPoints(event.touches, true);
-            this.drawTouchPoints(scaledPoints); //Visualise touch points
+            //this.drawTouchPoints(scaledPoints); //Visualise touch points
 
             //Get recognised tangible and add to surface
             if (event.touches.length > 2) {
                 let matches = this.recogniser.predict(points);
 
                 if (matches.length > 0) {
-                    let matchIndex = 0;
+                    var correctLetter = this.spPlay.$scope.currentWordSplit[this.spPlay.$scope.currentWordProgressIndex];
 
-                    let closestMatch = matches[matchIndex];
+                    var bestMatch;
 
-                    let template = this.library.tangibles[closestMatch.target];
-
-                    let position = Points.getCentroid(scaledPoints);
-
-                    let orientation = Points.getOrientation(points) - Points.getOrientation(template.registrationPoints); //current-original orientation
-
-                    while (Math.abs(orientation) > 40) {
-                        matchIndex++;
-
-                        if ( matchIndex == matches.length ) {
-                            return;
+                    for (match of matches) {
+                        if (match.similarity < 30 && match.target == correctLetter) {
+                            bestMatch = match;
+                            break;
                         }
-                        orientation = Points.getOrientation(points) - Points.getOrientation(template.registrationPoints);
                     }
 
-                    let id = Random.id();
-                    let instance = {type: closestMatch.target, position: position, orientation: orientation, zIndex: 0};
-                    this.diagram.tangibles[id] = instance;
-                    this.addVisual(id, instance.type, instance, template, this.stage);
-
-                    this.spPlay.$scope.addLetter(template.name[0]);
-
+                    this.spPlay.$scope.addLetter(bestMatch.target);
                 }
             }
-
-            this.stage.batchDraw();
         }
     }
 

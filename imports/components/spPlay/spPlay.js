@@ -20,6 +20,20 @@ class SPPlayCtrl {
         this.diagramId = Random.id();
         this.libraryId = this.$const.DEFAULT_LIBRARY_ID;
         this.isNewDiagram = "true";
+
+        $scope.tangibleController = new TangibleController('tangibleContainer', this);
+
+        this.helpers({
+            remoteDiagram: ()=> {
+                return Diagrams.findOne({_id: this.getReactively('diagramId')});
+            },
+            remoteLibrary: ()=> {
+                return Libraries.findOne({_id: this.getReactively('libraryId')});
+            }
+        });
+
+        this.libraryWatch = $scope.$watch('spPlay.remoteLibrary', this.openNewDiagram.bind(this));
+
         $scope.startCounter = 0;
         $scope.CORRECT = 1;
         $scope.INCORRECT = 2;
@@ -226,24 +240,11 @@ class SPPlayCtrl {
             $scope.$apply();
         }
 
-        $scope.tangibleController = new TangibleController('tangibleContainer', this);
-
-        this.helpers({
-            remoteDiagram: ()=> {
-                return Diagrams.findOne({_id: this.getReactively('diagramId')});
-            },
-            remoteLibrary: ()=> {
-                return Libraries.findOne({_id: this.getReactively('libraryId')});
-            }
-        });
-
-        this.libraryWatch = $scope.$watch('spPlay.remoteLibrary', this.openNewDiagram.bind(this));
-
     }
 
     openNewDiagram(newVal, oldVal)
     {
-        if(newVal != undefined && this.isNewDiagram)
+        if(true)
         {
             this.libraryWatch(); //cancels watch
             this.localDiagram = {
@@ -258,9 +259,17 @@ class SPPlayCtrl {
                 "tangibles": {}
             };
 
+            let libraryDef = {
+                "_id": "M5q3SwPNcgCCKDWQL",
+                "name": "Alphabet",
+                "owner": "everyone",
+                "images": {},
+                "tangibles": {}
+            };
+
             this.sharedData.diagramName = this.localDiagram.name;
             PubSub.publish('updateName', this.localDiagram.name);
-            this.$scope.tangibleController.openDiagram(this.localDiagram, angular.copy(newVal), this.$tgImages);
+            this.$scope.tangibleController.openDiagram(this.localDiagram, libraryDef, this.$tgImages);
         }
     }
 

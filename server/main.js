@@ -91,4 +91,13 @@ Meteor.startup(() => {
             Diagrams.insert(diagram);
         }
     }
+
+    if (Modules.find({}).count() == 0) {
+        console.log("No Modules found, creating default.");
+        let modules = JSON.parse(Assets.getText(path + "modules.json"));
+        for (i = 0; i < modules.length; i++) {
+            let module = modules[i];
+            Modules.insert(module);
+        }
+    }
 });
