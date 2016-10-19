@@ -41,7 +41,7 @@
 			<div class="middle">
 				<div class="progressUnit" ng-repeat="progressUnit in currentWordSequence">
 					<div class="progressLetter">{{progressUnit.letter}}</div>
-					<div class="progressUnderline" ng-class="{greenUnderline: progressUnit.status == CORRECT, redUnderline: progressUnit.status == INCORRECT, orangeUnderline: progressUnit.status == UNATTEMPTED}"></div>
+					<div class="progressUnderline" ng-class="{greenUnderline: (progressUnit.status == CORRECT || progressUnit.status == PREFILLED), redUnderline: progressUnit.status == INCORRECT, orangeUnderline: progressUnit.status == UNATTEMPTED}"></div>
 				</div>
 			</div>
 

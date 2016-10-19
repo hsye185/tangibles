@@ -24,6 +24,7 @@ class SPPlayCtrl {
         $scope.CORRECT = 1;
         $scope.INCORRECT = 2;
         $scope.UNATTEMPTED = 3; 
+        $scope.PREFILLED = 4; 
         $scope.gameOver = false;
 
         $scope.currentStudent = $gameStateService.currentStudent;
@@ -65,20 +66,48 @@ class SPPlayCtrl {
         $scope.levelInfo = {
             words: levelWords,
             maxUndos: level.maxUndos,
+            maxSpeaks: level.maxSpeaks,
             partialCompletionRatio: level.partialCompletionRatio
         };
 
         // $scope.levelInfo = $gameStateService.generateLevelInfo();
         $scope.wordList = $scope.levelInfo.words;
+        $scope.maxSpeaks = $scope.levelInfo.maxSpeaks;
         $scope.maxUndos = $scope.levelInfo.maxUndos;
+        $scope.partialCompletionRatio = $scope.levelInfo.partialCompletionRatio;
         //-------
 
         $scope.currentUndos = $scope.maxUndos;
+        $scope.currentSpeaks = $scope.maxSpeaks;
         $scope.currentWordIndex = 0;
         $scope.currentWordSplit = $scope.wordList[$scope.currentWordIndex].split("");
         $scope.currentWordSequence = $scope.getEmptySequence($scope.currentWordSplit.length);
         $scope.currentWordProgressIndex = 0;
 
+        //partial completion
+        let completedWordLength = Math.round($scope.wordList[$scope.currentWordIndex].length * $scope.partialCompletionRatio);
+        if(completedWordLength == $scope.wordList.length){
+            completedWordLength--;
+        }
+        let wordsAdded = 0;
+        while(wordsAdded < completedWordLength){
+            let index = Math.floor(Math.random() *  $scope.wordList[$scope.currentWordIndex].length);
+            if($scope.currentWordSequence[index].status == $scope.UNATTEMPTED){
+                $scope.currentWordSequence[index].letter = $scope.currentWordSplit[index];
+                $scope.currentWordSequence[index].status = $scope.PREFILLED;
+                wordsAdded++;
+            }
+        }
+
+        let jump = 0;
+        while($scope.currentWordSequence[$scope.currentWordProgressIndex+jump].status == $scope.PREFILLED){
+            jump++;
+            if($scope.currentWordSequence.length == $scope.currentWordProgressIndex+jump){
+                break;
+            }
+        }
+        $scope.currentWordProgressIndex+=jump;
+        
         $scope.undoButton = function(){
             if($scope.gameOver){
                 alert("Game Over! Please return to level select");
@@ -87,10 +116,24 @@ class SPPlayCtrl {
             if($scope.currentUndos == 0){
                 alert("You've ran out of Undos");
             }else{
-                $scope.currentWordProgressIndex--;
-                $scope.currentUndos--;
-                $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
-                $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+                if($scope.currentWordProgressIndex > 0){
+                    
+                    $scope.currentUndos--;
+                    
+
+                    let jump = 1;
+                    while($scope.currentWordSequence[$scope.currentWordProgressIndex-jump].status != $scope.PREFILLED){
+                        jump--;
+                        if($scope.currentWordProgressIndex-jump < 0){
+                            break;
+                        }
+                    }
+                    $scope.currentWordProgressIndex-=jump;
+                    $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
+                    $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+                }
+
+                $scope.currentWordProgressIndex+=jump;
             }
             
         };
@@ -98,15 +141,21 @@ class SPPlayCtrl {
             $state.go("levelSelect");
         };
         $scope.speakButton = function(){
-            Speech.init({
+            if($scope.currentSpeaks>0){
+                $scope.currentSpeaks--;
+                Speech.init({
                 rate : 0.5,
-            });
+                });
 
-            Speech.speak({
-                text: $scope.wordList[$scope.currentWordIndex],
-                onError: (e) => {console.log('sorry an error occured.', e)}, // optionnal error callback
-                onEnd: () => {console.log('your text has successfully been spoken.')} // optionnal onEnd callback
-            })
+                Speech.speak({
+                    text: $scope.wordList[$scope.currentWordIndex],
+                    onError: (e) => {console.log('sorry an error occured.', e)}, // optionnal error callback
+                    onEnd: () => {console.log('your text has successfully been spoken.')} // optionnal onEnd callback
+                })
+            }else{
+                alert("You've ran out of Speaks");
+            }
+            
         };
         $scope.addLetter = function(newLetter){
             if($scope.gameOver){
@@ -117,7 +166,6 @@ class SPPlayCtrl {
             if($scope.currentWordProgressIndex == $scope.currentWordSplit.length){
                 alert("You can't add another letter, the word currently has errors");
             }else{
-
                 $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = newLetter;
                 if(newLetter == $scope.currentWordSplit[$scope.currentWordProgressIndex]){
                     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.CORRECT;
@@ -137,15 +185,22 @@ class SPPlayCtrl {
                 }
                 
                 //check if the letter added was the last one
-                if($scope.currentWordProgressIndex == $scope.currentWordSplit.length-1){
+                let wordFinished = true;
+                for(let checkIndex = 0; checkIndex < $scope.currentWordSplit.length; checkIndex++){
+                    if($scope.currentWordSequence[checkIndex].status == $scope.INCORRECT || $scope.currentWordSequence[checkIndex].status == $scope.UNATTEMPTED ){
+                        wordFinished = false;
+                        break;
+                    }
+                }
+                if(wordFinished){
                     //checks if last letter was correct
                     if($scope.currentWordSequence[$scope.currentWordProgressIndex].status == $scope.CORRECT){
                  
                         var millisecondsToWait = 100;
                         setTimeout(function() {
-                             //check if no more words left in list
                             if($scope.currentWordIndex == $scope.wordList.length-1){
-                                alert("Congratulations, you've completed level: 1");
+
+                                alert("Congratulations, you've completed level: "+($scope.currentLevelId+1));
                                 $gameStateService.unlockNextLevel();
                                 $state.go("levelSelect");
                             }else{
@@ -156,12 +211,17 @@ class SPPlayCtrl {
                                 $scope.currentWordProgressIndex = 0;
                                 $scope.$apply();
                             }
-                            
-                            
                         }, millisecondsToWait, $scope);
                     }
                 }
-                $scope.currentWordProgressIndex++;
+                let jump = 1;
+                while($scope.currentWordSequence[$scope.currentWordProgressIndex+jump].status == $scope.PREFILLED){
+                    jump++;
+                    if($scope.currentWordSequence.length == $scope.currentWordProgressIndex+jump){
+                        break;
+                    }
+                }
+                $scope.currentWordProgressIndex+=jump;
             }
             $scope.$apply();
         }

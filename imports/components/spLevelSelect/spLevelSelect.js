@@ -28,7 +28,7 @@ class SPLevelSelectCtrl {
         }, millisecondsToWait3, $scope);
 
         $scope.currentLevelStatus = function(){
-            return ($scope.currentStudent.moduleProgress[$scope.currentModuleName])[$scope.currentLevelBeingViewed];
+            return ($scope.currentStudent.moduleProgress[$scope.currentModuleName])[$scope.currentLevelBeingViewed+1];
         };
        var millisecondsToWait2 = 100;
         setTimeout(function() {
@@ -40,7 +40,10 @@ class SPLevelSelectCtrl {
             $scope.currentLevelBeingViewed--;
         };
         $scope.rightButton = function(){
-            $scope.currentLevelBeingViewed++;
+            let nextLevelStatus = ($scope.currentStudent.moduleProgress[$scope.currentModuleName])[$scope.currentLevelBeingViewed+1];
+            if(nextLevelStatus!=0){
+                $scope.currentLevelBeingViewed++;
+            }
         };
 
         $scope.levelClicked = function(level){
@@ -52,7 +55,7 @@ class SPLevelSelectCtrl {
         };
 
         $scope.startLevel = function(){
-            $scope.currentLevelId = $scope.currentLevelBeingViewed;
+            $gameStateService.currentLevelId = $scope.currentLevelBeingViewed;
             $('#titleBlock').fadeOut(1000,function(){
             });
             $('#content').fadeOut(1000,function(){

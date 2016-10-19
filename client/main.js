@@ -260,13 +260,18 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
         let levelInformation = {
             words: levelWords,
             maxUndos: level.maxUndos,
+            maxSpeaks: level.maxSpeaks,
             partialCompletionRatio: level.partialCompletionRatio
         };
         return levelInformation;
     };
     this.unlockNextLevel = function(){
-        (this.currentStudent.moduleProgress[this.currentModuleName])[this.currentLevelId+1] = 1;
-        Meteor.call("students.updateModuleProgress", this.currentStudent);
+        this.currentLevelId++;
+        if(this.currentLevelId < this.levels.length ){
+            (this.currentStudent.moduleProgress[this.currentModuleName])[this.currentLevelId] = 1;
+            Meteor.call("students.updateModuleProgress", this.currentStudent);
+        }
+        
     };
 })
 .service('$tgImages', Images)
