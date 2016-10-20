@@ -8,13 +8,40 @@
 			<div class="top">
 
 				<button tabindex="-1" class="quitButton inlineButton darkBlue" ng-click="quitButton()">Quit</button>
+
+				<!-- <button class="inlineButton" ng-click="addLetter('a')">A</button>
+				<button class="inlineButton" ng-click="addLetter('b')">B</button>
+				<button class="inlineButton" ng-click="addLetter('c')">C</button>
+				<button class="inlineButton" ng-click="addLetter('d')">D</button>
+				<button class="inlineButton" ng-click="addLetter('e')">E</button>
+				<button class="inlineButton" ng-click="addLetter('f')">F</button>
+				<button class="inlineButton" ng-click="addLetter('g')">G</button>
+				<button class="inlineButton" ng-click="addLetter('h')">H</button>
+				<button class="inlineButton" ng-click="addLetter('i')">I</button>
+				<button class="inlineButton" ng-click="addLetter('j')">J</button>
+				<button class="inlineButton" ng-click="addLetter('k')">K</button>
+				<button class="inlineButton" ng-click="addLetter('l')">L</button>
+				<button class="inlineButton" ng-click="addLetter('m')">M</button>
+				<button class="inlineButton" ng-click="addLetter('n')">N</button>
+				<button class="inlineButton" ng-click="addLetter('o')">O</button>
+				<button class="inlineButton" ng-click="addLetter('p')">P</button>
+				<button class="inlineButton" ng-click="addLetter('q')">Q</button>
+				<button class="inlineButton" ng-click="addLetter('r')">R</button>
+				<button class="inlineButton" ng-click="addLetter('s')">S</button>
+				<button class="inlineButton" ng-click="addLetter('t')">T</button>
+				<button class="inlineButton" ng-click="addLetter('u')">U</button>
+				<button class="inlineButton" ng-click="addLetter('v')">V</button>
+				<button class="inlineButton" ng-click="addLetter('w')">W</button>
+				<button class="inlineButton" ng-click="addLetter('x')">X</button>
+				<button class="inlineButton" ng-click="addLetter('y')">Y</button>
+				<button class="inlineButton" ng-click="addLetter('z')">Z</button> -->
 				
 			</div>
 
 			<div class="middle">
 				<div class="progressUnit" ng-repeat="progressUnit in currentWordSequence">
 					<div class="progressLetter">{{progressUnit.letter}}</div>
-					<div class="progressUnderline" ng-class="{greenUnderline: (progressUnit.status == CORRECT || progressUnit.status == PREFILLED), redUnderline: progressUnit.status == INCORRECT, orangeUnderline: progressUnit.status == UNATTEMPTED}"></div>
+					<div class="progressUnderline" ng-class="{greenUnderline: (progressUnit.status == CORRECT || progressUnit.status == PREFILLED), redUnderline: progressUnit.status == INCORRECT, orangeUnderline: progressUnit.status == UNATTEMPTED, orangeBlink: progressUnit.status == CURRENT}"></div>
 				</div>
 			</div>
 

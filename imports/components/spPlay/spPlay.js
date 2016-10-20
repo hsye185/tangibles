@@ -38,7 +38,8 @@ class SPPlayCtrl {
         $scope.CORRECT = 1;
         $scope.INCORRECT = 2;
         $scope.UNATTEMPTED = 3; 
-        $scope.PREFILLED = 4; 
+        $scope.PREFILLED = 4;
+        $scope.CURRENT = 5;
         $scope.gameOver = false;
 
         $scope.currentStudent = $gameStateService.currentStudent;
@@ -121,6 +122,7 @@ class SPPlayCtrl {
             }
         }
         $scope.currentWordProgressIndex+=jump;
+        $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.CURRENT;
         
         $scope.undoButton = function(){
             if($scope.gameOver){
@@ -154,8 +156,9 @@ class SPPlayCtrl {
 
                 while (i > -1) {
                     if ($scope.currentWordSequence[i].status == $scope.INCORRECT) {
+                            $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
                             $scope.currentWordSequence[i].letter = " ";
-                            $scope.currentWordSequence[i].status = $scope.UNATTEMPTED;
+                            $scope.currentWordSequence[i].status = $scope.CURRENT;
                             $scope.currentWordProgressIndex = i;
                             break;
                     }
@@ -223,7 +226,7 @@ class SPPlayCtrl {
                     //checks if last letter was correct
                     if($scope.currentWordSequence[$scope.currentWordProgressIndex].status == $scope.CORRECT){
                  
-                        var millisecondsToWait = 100;
+                        var millisecondsToWait = 1000;
                         setTimeout(function() {
                             if($scope.currentWordIndex == $scope.wordList.length-1){
 
@@ -248,7 +251,11 @@ class SPPlayCtrl {
                         break;
                     }
                 }
+
                 $scope.currentWordProgressIndex+=jump;
+                if($scope.currentWordSequence[$scope.currentWordProgressIndex] < $scope.currentWordSequence.length - 1) {
+                    $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.CURRENT;
+                }
             }
             $scope.$apply();
         }

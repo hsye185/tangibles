@@ -185,6 +185,13 @@
   background-repeat: no-repeat; 
   background-size: 100px;
 }
+.orangeBlink{
+  background-image: url("../images/gold_bar.svg"); 
+  background-repeat: no-repeat; 
+  background-size: 100px;
+  animation: blinker 0.3s cubic-bezier(.5, 0, 1, 1) infinite alternate;  
+}
+@keyframes blinker { to { opacity: 0.2; } }
 
 #tangibleContainer
 {
