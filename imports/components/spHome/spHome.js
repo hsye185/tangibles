@@ -6,7 +6,7 @@ import {Diagrams} from '../../api/collections/diagrams.js';
 import {Libraries} from '../../api/collections/libraries.js';
 
 class SPHomeCtrl {
-    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const) {
+    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const, $mdDialog) {
         'ngInject';
         $reactive(this).attach($scope);
         this.$scope = $scope;
@@ -24,18 +24,33 @@ class SPHomeCtrl {
         }, millisecondsToWait, $scope);
 
         $scope.gotoSettings = function(){
-            $(function () {
-                $('#settingsButton').fadeOut(1000);
-                $('#playButton').fadeOut(1000);
-                $('#creditsButton').fadeOut(1000);
-                $('#quitButton').fadeOut(1000);
-                $('#logo').fadeOut(1000);
-                $('#title').fadeOut(1000);
-                $('#subTitle').fadeOut(1000,function(){
-                    window.location="#/settings";
-                });
-            });
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.prompt()
+              .title('What is the password?')
+              .ok('OK')
+              .cancel('Cancel');
+
+            $mdDialog.show(confirm).then(function(result) {
+                if(result=='Admin'){
+                    $(function () {
+                        $('#settingsButton').fadeOut(1000);
+                        $('#playButton').fadeOut(1000);
+                        $('#creditsButton').fadeOut(1000);
+                        $('#quitButton').fadeOut(1000);
+                        $('#logo').fadeOut(1000);
+                        $('#title').fadeOut(1000);
+                        $('#subTitle').fadeOut(1000,function(){
+                            window.location="#/settings";
+                        });
+                    });
+                }
+            }, function() {});
+            
         }
+
+        $scope.showPrompt = function(ev) {
+            
+          };
 
         $scope.gotoLevelSelection = function(){
             $(function () {
