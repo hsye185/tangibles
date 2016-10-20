@@ -1,0 +1,49 @@
+[
+	{
+		"_id" : "1",
+		"name" : "Grade 1",
+		"words" : ["at", "had", "of", "that", "up", "but", "he", "on", "then", "went",
+					"for", "is", "she", "when", "got", "me", "so", "they", "you"]
+	},
+	{
+		"_id" : "2",
+		"name" : "Grade 2",
+		"words" : ["again", "do", "next", "people", "time",
+					"an", "first", "night", "put", "took",
+					"around", "food", "no", "ran", "two",
+					"big", "from", "now", "us",
+					"by", "good", "school", "very",
+					"can", "has", "old", "see", "well",
+					"come", "him", "only", "started", "what",
+					"could", "house", "or", "their", "will",
+					"dad", "if", "other", "them", "would",
+					"did", "little", "over", "this", "your"]
+	},
+	{
+		"_id" : "3",
+		"name" : "Grade 3",
+		"words" : ["am", "door", "last", "once", "through",
+					"another", "everyone", "left", "play", "told",
+"away", "family", "long", "really", "too",
+"bed", "five", "looked", "room", "walked",
+"been", "found", "made", "something", "want",
+"before", "friend", "man", "still", "way",
+"best", "fun", "more", "thing",
+"brother", "heard", "morning", "think", "which",
+"called", "here", "name", "thought", "who",
+"car", "know", "never", "three", "year"]
+	},
+	{
+		"_id" : "4",
+		"name" : "Grade 4",
+		"words" : ["allowed", "disappeared", "holidays", "stopped", "awhile",
+"doesn’t", "hopped", "straight", "believe", "dollars",
+"hospital", "breakfast", "tomorrow", "instead",
+"threw", "brought", "everybody", "lightning",
+"cannon", "everyday", "luckily", "video", 
+"everywhere", "nearly", "caught", "excited",
+"police", "watch", "centre", "favourite", "present",
+"chocolate", "field", "probably", "clothes", "friends", "quiet",
+"front", "scared", "grabbed", "second", "someone", "different", "having"]
+	}
+]

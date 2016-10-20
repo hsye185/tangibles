@@ -4,6 +4,7 @@ import {Visual} from './visual';
 import {Recogniser} from './recogniser';
 import {Canvas2Image} from 'canvas2image';
 import html2canvas from 'html2canvas';
+import {alphabet_tangibles} from './alphabetTangibles';
 
 export class AbstractTangibleController {
 
@@ -142,8 +143,8 @@ export class TangibleController extends AbstractTangibleController{
         this.width = rect.right - rect.left;
         this.height = rect.bottom - rect.top;
 
-        this.width = 256;
-        this.height = 256;
+        this.width = 964;
+        this.height = 362;
 
         this.stage = new Konva.Stage({
             container: this.containerID,
@@ -176,7 +177,6 @@ export class TangibleController extends AbstractTangibleController{
         this.stage.add(this.deselectLayer, this.tangibleLayer, this.touchPointsLayer); //Left param on bottom, right on top
         this.stage.getContent().addEventListener('touchstart', this.onTouch.bind(this));
 
-        this.selectedLetter = "";
     }
 
     onDeselected() {
@@ -311,68 +311,9 @@ export class TangibleController extends AbstractTangibleController{
         this.clear();
         this.diagram = diagram;
         this.library = library;
-        this.library.tangibles = { "NaEFePtk4RP3AWi8r": {
-        "name": "Tignpost",
-        "icon": false,
-        "scale": 0.4274809160305344,
-        "startAngle": 178,
-        "transparentHit": false,
-        "registrationPoints": [
-          {
-            "x": 99,
-            "y": 163
-          },
-          {
-            "x": 213,
-            "y": 87
-          },
-          {
-            "x": 71.5,
-            "y": 86.5
-          }
-        ]
-      }, "dpN9dJkPdBRJnu2op": {
-        "name": "Coar",
-        "icon": true,
-        "scale": 1.0,
-        "startAngle": 200,
-        "transparentHit": true,
-        "registrationPoints": [
-          {
-            "x": 172,
-            "y": 201
-          },
-          {
-            "x": 80,
-            "y": 215
-          },
-          {
-            "x": 163,
-            "y": 65
-          }
-        ]
-      }, "ka2zMb8v9dcEi3tEv": {
-        "name": "Aungry",
-        "icon": false,
-        "scale": 1.0,
-        "startAngle": 270,
-        "transparentHit": true,
-        "registrationPoints": [
-          {
-            "x": 213.3330078125,
-            "y": 298.3330078125
-          },
-          {
-            "x": 238,
-            "y": 233
-          },
-          {
-            "x": 348,
-            "y": 263
-          }
-        ]
-      }};
         this.$tgImages = $tgImages;
+
+        this.library.tangibles = alphabet_tangibles;
 
         //Setup recogniser
         let features = [];
@@ -404,6 +345,7 @@ export class TangibleController extends AbstractTangibleController{
             let template = this.library.tangibles[instance.type];
             this.addVisual(id, instance.type, instance, template, this.stage);
         }
+        
     }
 
     addVisual(instanceId, typeId, model, template, stage) {
@@ -451,30 +393,27 @@ export class TangibleController extends AbstractTangibleController{
         if (this.enable) {
             let points = this.toPoints(event.touches);
             let scaledPoints = this.toPoints(event.touches, true);
-            this.drawTouchPoints(scaledPoints); //Visualise touch points
+            //this.drawTouchPoints(scaledPoints); //Visualise touch points
 
             //Get recognised tangible and add to surface
             if (event.touches.length > 2) {
                 let matches = this.recogniser.predict(points);
 
                 if (matches.length > 0) {
-                    let closestMatch = matches[0];
-                    let template = this.library.tangibles[closestMatch.target];
+                    var correctLetter = this.spPlay.$scope.currentWordSplit[this.spPlay.$scope.currentWordProgressIndex];
 
-                    let position = Points.getCentroid(scaledPoints);
+                    var bestMatch = matches[0];
 
-                    let orientation = Points.getOrientation(points) - Points.getOrientation(template.registrationPoints); //current-original orientation
+                    for (match of matches) {
+                        if (match.similarity < 30 && match.target == correctLetter) {
+                            bestMatch = match;
+                            break;
+                        }
+                    }
 
-                    let id = Random.id();
-                    let instance = {type: closestMatch.target, position: position, orientation: orientation, zIndex: 0};
-                    this.diagram.tangibles[id] = instance;
-                    //this.addVisual(id, instance.type, instance, template, this.stage);
-
-                    this.spPlay.$scope.addLetter(template.name[0]);
+                    this.spPlay.$scope.addLetter(bestMatch.target);
                 }
             }
-
-            //this.stage.batchDraw();
         }
     }
 

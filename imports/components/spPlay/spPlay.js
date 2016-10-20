@@ -20,6 +20,20 @@ class SPPlayCtrl {
         this.diagramId = Random.id();
         this.libraryId = this.$const.DEFAULT_LIBRARY_ID;
         this.isNewDiagram = "true";
+
+        $scope.tangibleController = new TangibleController('tangibleContainer', this);
+
+        this.helpers({
+            remoteDiagram: ()=> {
+                return Diagrams.findOne({_id: this.getReactively('diagramId')});
+            },
+            remoteLibrary: ()=> {
+                return Libraries.findOne({_id: this.getReactively('libraryId')});
+            }
+        });
+
+        this.libraryWatch = $scope.$watch('spPlay.remoteLibrary', this.openNewDiagram.bind(this));
+
         $scope.startCounter = 0;
         $scope.CORRECT = 1;
         $scope.INCORRECT = 2;
@@ -116,24 +130,37 @@ class SPPlayCtrl {
             if($scope.currentUndos == 0){
                 alert("You've ran out of Undos");
             }else{
-                if($scope.currentWordProgressIndex > 0){
+                // if($scope.currentWordProgressIndex > 0){
                     
-                    $scope.currentUndos--;
+                //     $scope.currentUndos--;
                     
 
-                    let jump = 1;
-                    while($scope.currentWordSequence[$scope.currentWordProgressIndex-jump].status != $scope.PREFILLED){
-                        jump--;
-                        if($scope.currentWordProgressIndex-jump < 0){
+                //     let jump = 1;
+                //     while($scope.currentWordSequence[$scope.currentWordProgressIndex-jump].status != $scope.PREFILLED){
+                //         jump--;
+                //         if($scope.currentWordProgressIndex-jump < 0){
+                //             break;
+                //         }
+                //     }
+                //     $scope.currentWordProgressIndex-=jump;
+                //     $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
+                //     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+                // }
+
+                // $scope.currentWordProgressIndex+=jump;
+                $scope.currentUndos--;
+
+                var i = $scope.currentWordSplit.length - 1;
+
+                while (i > -1) {
+                    if ($scope.currentWordSequence[i].status == $scope.INCORRECT) {
+                            $scope.currentWordSequence[i].letter = " ";
+                            $scope.currentWordSequence[i].status = $scope.UNATTEMPTED;
+                            $scope.currentWordProgressIndex = i;
                             break;
-                        }
                     }
-                    $scope.currentWordProgressIndex-=jump;
-                    $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
-                    $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+                    i--;
                 }
-
-                $scope.currentWordProgressIndex+=jump;
             }
             
         };
@@ -226,24 +253,11 @@ class SPPlayCtrl {
             $scope.$apply();
         }
 
-        $scope.tangibleController = new TangibleController('tangibleContainer', this);
-
-        this.helpers({
-            remoteDiagram: ()=> {
-                return Diagrams.findOne({_id: this.getReactively('diagramId')});
-            },
-            remoteLibrary: ()=> {
-                return Libraries.findOne({_id: this.getReactively('libraryId')});
-            }
-        });
-
-        this.libraryWatch = $scope.$watch('spPlay.remoteLibrary', this.openNewDiagram.bind(this));
-
     }
 
     openNewDiagram(newVal, oldVal)
     {
-        if(newVal != undefined && this.isNewDiagram)
+        if(true)
         {
             this.libraryWatch(); //cancels watch
             this.localDiagram = {
@@ -258,9 +272,17 @@ class SPPlayCtrl {
                 "tangibles": {}
             };
 
+            let libraryDef = {
+                "_id": "M5q3SwPNcgCCKDWQL",
+                "name": "Alphabet",
+                "owner": "everyone",
+                "images": {},
+                "tangibles": {}
+            };
+
             this.sharedData.diagramName = this.localDiagram.name;
             PubSub.publish('updateName', this.localDiagram.name);
-            this.$scope.tangibleController.openDiagram(this.localDiagram, angular.copy(newVal), this.$tgImages);
+            this.$scope.tangibleController.openDiagram(this.localDiagram, libraryDef, this.$tgImages);
         }
     }
 

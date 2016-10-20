@@ -48,7 +48,7 @@ export class Recogniser {
             for (let i = 0; i < this.features.length; i++) {
                 let feature = this.features[i];
 
-                if (feature.length == 3) {
+                if (points.length == 3 && feature.length == 3) {
                     let regPointsDists = Points.sortClockwise(feature); // Sort the features points in clockwise order.
                     // The point with the furthest distance from the centroid of the triangle is first. We do this so
                     // that when we consistently compare the lengths of the triangle sides.
@@ -61,6 +61,7 @@ export class Recogniser {
                     // Compute the similarity metric: The sum of the differences between the sides of the touch point
                     // triangle and the feature triangle.
                     let similarity = Math.abs(touchDistA - regDistA) + Math.abs(touchDistB - regDistB) + Math.abs(touchDistC - regDistC);
+
                     matches.push({target: this.targets[i], similarity: similarity});
                 }
             }
