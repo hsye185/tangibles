@@ -12,6 +12,11 @@ class SPHomeCtrl {
         this.$scope = $scope;
         this.$state = $state;
 
+        myAudio = new Audio('audio/Payday-Jason-Farnham.mp3');
+        myAudio.loop = true;
+        myAudio.volume = 0.01;
+        myAudio.play();
+
         var millisecondsToWait = 10;
         setTimeout(function() {
             $('#botPanel').animate({height: '42.708333333333%'},1500,function(){

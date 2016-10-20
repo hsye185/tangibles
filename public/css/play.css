@@ -160,14 +160,14 @@
   color : #00072D;
   color : rgb(0, 7, 45);
   position: absolute;
-  top: calc((100% - 316px) / 2 - 15px);
+  top: calc((100% - 316px) / 2 + 20px);
   margin-left: 37px;
 }
 .progressUnderline{
   height: 10px;
   position: absolute;
   width: 100px; 
-  top: calc((100% - 316px) / 2 + 50px);
+  top: calc((100% - 316px) / 2 + 85px);
   /*padding-right: 20px;*/
 }
 .redUnderline{
@@ -192,7 +192,8 @@
   top: 15px;
 
   left: 15px;
-  width: calc(100% - 30px);
+  /*width: calc(100% - 30px);*/
+  width: 0px;
   height: calc(100% - 225px);
 }
 
