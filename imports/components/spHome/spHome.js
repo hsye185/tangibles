@@ -6,11 +6,20 @@ import {Diagrams} from '../../api/collections/diagrams.js';
 import {Libraries} from '../../api/collections/libraries.js';
 
 class SPHomeCtrl {
-    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const, $mdDialog) {
+    constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const, $mdDialog, $gameStateService) {
         'ngInject';
         $reactive(this).attach($scope);
         this.$scope = $scope;
         this.$state = $state;
+
+        if ($gameStateService.audio == null){
+            $gameStateService.audio = new Audio('audio/Payday-Jason-Farnham.mp3');
+            $gameStateService.audio.loop = true;
+            $gameStateService.audio.volume = 0.01;
+            $gameStateService.audio.play();
+        }
+
+        
 
         var millisecondsToWait = 10;
         setTimeout(function() {
