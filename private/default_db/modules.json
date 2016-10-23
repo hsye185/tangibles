@@ -2,8 +2,7 @@
 	{
 		"_id" : "1",
 		"name" : "Grade 1",
-		"words" : ["at", "had", "of", "that", "up", "but", "he", "on", "then", "went",
-					"for", "is", "she", "when", "got", "me", "so", "they", "you"]
+		"words" : ["cat", "had", "dog", "car", "green", "blue", "red"]
 	},
 	{
 		"_id" : "2",

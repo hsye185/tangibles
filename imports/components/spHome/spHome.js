@@ -12,15 +12,13 @@ class SPHomeCtrl {
         this.$scope = $scope;
         this.$state = $state;
 
-        if ($gameStateService.audio == null){
-            $gameStateService.audio = new Audio('audio/Payday-Jason-Farnham.mp3');
-            $gameStateService.audio.loop = true;
-            $gameStateService.audio.volume = 0.01;
-            $gameStateService.audio.play();
-        }
-
+        // if ($gameStateService.audio == null){
+        //     $gameStateService.audio = new Audio('audio/Payday-Jason-Farnham.mp3');
+        //     $gameStateService.audio.loop = true;
+        //     $gameStateService.audio.volume = 0.01;
+        //     $gameStateService.audio.play();
+        // }
         
-
         var millisecondsToWait = 10;
         setTimeout(function() {
             $('#botPanel').animate({height: '42.708333333333%'},1500,function(){
@@ -34,13 +32,12 @@ class SPHomeCtrl {
 
         $scope.gotoSettings = function(){
             // Appending dialog to document.body to cover sidenav in docs app
-            var confirm = $mdDialog.prompt()
-              .title('What is the password?')
-              .ok('OK')
-              .cancel('Cancel');
+            // var confirm = $mdDialog.prompt()
+            //   .title('What is the password?')
+            //   .ok('OK')
+            //   .cancel('Cancel');
 
-            $mdDialog.show(confirm).then(function(result) {
-                if(result=='Admin'){
+
                     $(function () {
                         $('#settingsButton').fadeOut(1000);
                         $('#playButton').fadeOut(1000);
@@ -52,8 +49,6 @@ class SPHomeCtrl {
                             window.location="#/settings";
                         });
                     });
-                }
-            }, function() {});
             
         }
 

@@ -222,6 +222,7 @@ class SPPlayCtrl {
                         break;
                     }
                 }
+                $scope.$apply();
                 if(wordFinished){
                     //checks if last letter was correct
                     if($scope.currentWordSequence[$scope.currentWordProgressIndex].status == $scope.CORRECT){
