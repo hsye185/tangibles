@@ -6,6 +6,13 @@ class SPLevelSelectCtrl {
     constructor($scope, $reactive, $gameStateService, $state) {
         'ngInject'; 
         $reactive(this).attach($scope);
+        setTimeout(function() {
+            if(!$gameStateService.isOnline){
+                alert("Please do not refresh page, returning to setup screen");
+                $state.go("setup");
+            }
+        }, 1000, $scope);
+        
        $scope.currentStudent = $gameStateService.currentStudent;
        $scope.currentLevelId = $gameStateService.currentLevelId;
        $scope.currentModuleName = $gameStateService.currentModuleName;

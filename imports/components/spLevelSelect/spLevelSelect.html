@@ -14,7 +14,7 @@
     	<p class="title whiteAmber">Level: {{ currentLevelBeingViewed+1 | getWordForNumber }}</p>
     </div>
     <div id="content" class="content" style="display:none">
-    	<p class="wordCount">{{levels[currentLevelBeingViewed].wordCount}} WORDS</p>
+    	<p class="wordCount">{{levels[currentLevelBeingViewed].wordCount}} {{levels[currentLevelBeingViewed].wordCount > 1 ? "WORDS" : "WORD"}}</p>
     	<div tabindex="-1" class="leftArrow" ng-click="leftButton()" ng-class="{displayNone: currentLevelBeingViewed <= 0}"></div>
     	<p tabindex="-1" class="previousButton" ng-click="leftButton()" ng-class="{displayNone: currentLevelBeingViewed <= 0}">Level {{currentLevelBeingViewed}} </p>
     	<p tabindex="-1" class="nextButton" ng-click="rightButton()" ng-class="{displayNone: currentLevelBeingViewed+2 >= 10}">Level {{ (currentLevelBeingViewed+2)}} </p>
@@ -25,8 +25,8 @@
     	<div class="speaksIcon"></div>
     	<p class="speaksText">{{levels[currentLevelBeingViewed].maxSpeaks}} Speaks</p>
     	<div class="emptyCircleIcon"></div>
-    	<div class="filledInIconFifty"></div>
-    	<p class="filledInText"> {{levels[currentLevelBeingViewed].partialCompletionRatio}}% filled-In</p>
+    	<div ng-class="{emptyCircleIcon: levels[currentLevelBeingViewed].partialCompletionRatio == 0, filledInIconTen: levels[currentLevelBeingViewed].partialCompletionRatio == 0.1, filledInIconTwenty: levels[currentLevelBeingViewed].partialCompletionRatio == 0.2, filledInIconThirty: levels[currentLevelBeingViewed].partialCompletionRatio == 0.3, filledInIconForty: levels[currentLevelBeingViewed].partialCompletionRatio == 0.5, filledInIconFifty: levels[currentLevelBeingViewed].partialCompletionRatio == 0.4, filledInIconFifty: levels[currentLevelBeingViewed].partialCompletionRatio == 0.5, filledInIconSixty: levels[currentLevelBeingViewed].partialCompletionRatio == 0.6, filledInIconSeventy: levels[currentLevelBeingViewed].partialCompletionRatio == 0.7, filledInIconEighty: levels[currentLevelBeingViewed].partialCompletionRatio == 0.8, filledInIconNinety: levels[currentLevelBeingViewed].partialCompletionRatio == 0.9}"></div>
+    	<p class="filledInText"> {{levels[currentLevelBeingViewed].partialCompletionRatio * 100}}% filled-In</p>
 
     	<div tabindex="-1" id="startButton" class="startButton" ng-click="startLevel()"></div>
     </div>

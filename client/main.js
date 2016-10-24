@@ -178,6 +178,7 @@ angular.module('tangibles', [angularMeteor, ngMaterial, ngAnimate, 'ui.router', 
     };
     return service;
 }).service('$gameStateService', function () {
+    this.isOnline = false;
     this.currentStudent = {};
     this.currentModuleName = "Grade 4";
     this.currentModuleWords = [];

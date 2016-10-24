@@ -11,6 +11,14 @@ class SPPlayCtrl {
     constructor($scope, $reactive, $stateParams, $tgImages, $state, $tgSharedData, $const, $gameStateService) {
         'ngInject';
         $reactive(this).attach($scope);
+        
+         setTimeout(function() {
+            if(!$gameStateService.isOnline){
+                alert("Please do not refresh page, returning to setup screen");
+                $state.go("setup");
+            }
+        }, 1000, $scope);
+
         this.$scope = $scope;
         this.$tgImages = $tgImages;
         this.$const = $const;
@@ -128,35 +136,18 @@ class SPPlayCtrl {
             if($scope.gameOver){
                 alert("Game Over! Please return to level select");
                 return;
-            }
-            if($scope.currentUndos == 0){
+            }else if($scope.currentUndos == 0){
                 alert("You've ran out of Undos");
+            }else if($scope.currentWordProgressIndex == 0){
+                return;
             }else{
-                // if($scope.currentWordProgressIndex > 0){
-                    
-                //     $scope.currentUndos--;
-                    
-
-                //     let jump = 1;
-                //     while($scope.currentWordSequence[$scope.currentWordProgressIndex-jump].status != $scope.PREFILLED){
-                //         jump--;
-                //         if($scope.currentWordProgressIndex-jump < 0){
-                //             break;
-                //         }
-                //     }
-                //     $scope.currentWordProgressIndex-=jump;
-                //     $scope.currentWordSequence[$scope.currentWordProgressIndex].letter = " ";
-                //     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
-                // }
-
-                // $scope.currentWordProgressIndex+=jump;
-                $scope.currentUndos--;
 
                 var i = $scope.currentWordSplit.length - 1;
 
                 while (i > -1) {
                     if ($scope.currentWordSequence[i].status == $scope.INCORRECT) {
-                            $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
+                            $scope.currentUndos--;
+                            // $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.UNATTEMPTED;
                             $scope.currentWordSequence[i].letter = " ";
                             $scope.currentWordSequence[i].status = $scope.CURRENT;
                             $scope.currentWordProgressIndex = i;
@@ -217,12 +208,12 @@ class SPPlayCtrl {
                 //check if the letter added was the last one
                 let wordFinished = true;
                 for(let checkIndex = 0; checkIndex < $scope.currentWordSplit.length; checkIndex++){
-                    if($scope.currentWordSequence[checkIndex].status == $scope.INCORRECT || $scope.currentWordSequence[checkIndex].status == $scope.UNATTEMPTED ){
+                    if($scope.currentWordSequence[checkIndex].status == $scope.INCORRECT || $scope.currentWordSequence[checkIndex].status == $scope.UNATTEMPTED || $scope.currentWordSequence[checkIndex].status == $scope.CURRENT ){
                         wordFinished = false;
                         break;
                     }
                 }
-                $scope.$apply();
+                // $scope.$apply();
                 if(wordFinished){
                     //checks if last letter was correct
                     if($scope.currentWordSequence[$scope.currentWordProgressIndex].status == $scope.CORRECT){

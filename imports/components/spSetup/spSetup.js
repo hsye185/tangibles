@@ -73,6 +73,7 @@ class SPSetupCtrl {
                             $('#topPanel').animate({top: '100px', height: topHeight},1000);
                             $('#midPanel').animate({bottom: '0px', left: '0px', height: '40px', width: '25%'},1000);
                             $('#botPanel').animate({bottom: '0px', left: '25%', width: '75%', height: '40px'},1000, function(){
+                                $gameStateService.isOnline = true;
                                 $state.go("levelSelect");
                             });
                         });
