@@ -245,7 +245,7 @@ class SPPlayCtrl {
                 }
 
                 $scope.currentWordProgressIndex+=jump;
-                if($scope.currentWordSequence[$scope.currentWordProgressIndex] < $scope.currentWordSequence.length - 1) {
+                if($scope.currentWordProgressIndex < $scope.currentWordSequence.length) {
                     $scope.currentWordSequence[$scope.currentWordProgressIndex].status = $scope.CURRENT;
                 }
             }
