@@ -30,7 +30,7 @@ Starting the Meteor app, see the [Meteor tutorial](https://www.meteor.com/tutori
 
 Open the application in your brower [http://localhost:3000](http://localhost:3000).
 
-This application was a build up off the previous oroo preservation language, all files added for the creation of this project are prefixed with "sp".
+This application was a build up off the previous oroo language preservation app, all files added for the creation of this project are prefixed with "sp".
 
 
 
