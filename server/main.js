@@ -4,7 +4,7 @@ import {Diagrams} from '../imports/api/collections/diagrams';
 import {Modules} from '../imports/api/collections/modules';
 import {Students} from '../imports/api/collections/students';
 import entries from 'object.entries';
-import {fromByteArray} from '../node_modules/base64-js/lib/b64';
+import {fromByteArray} from '../node_modules/base64-js/base64js.min.js';
 
 if (!Object.entries) {
     entries.shim();
